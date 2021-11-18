@@ -156,28 +156,7 @@ if (isset($_POST['btnAddQuiz'])) {
 <h1><?php echo $title; ?></h1>
 
 <div class="content-container">
-  <form class="card" id="test" action="./?page=question&quizName=' . $quiz->name . '" method="POST">
-    <div class="card-top">
-      <p class="quiz-name">temp</p>
-      <div style="display: flex; column-gap: 5px;">
-        <button type="submit" name="btnQuizId" id="btn-test">VIEW</button>
-        <div class='drop-down'>
-          <i class='fas fa-ellipsis-v'></i>
-          <div class='drop-down-list'>
-            <p class='edit'>Edit quiz</p>
-            <p class='delete'>Delete quiz</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-bot">
-      <p class="date">2021/11/13</p>
-      <div class="horizon-line"></div>
-      <p class="date">2021/11/17</p>
-    </div>
-    <input type="hidden" name="quizId" value="123"></input>
-  </form>
-
+  
   <?php
   // Get quiz collections
   $quizCollection = $mydb->quiz;

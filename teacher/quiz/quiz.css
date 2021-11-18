@@ -239,20 +239,10 @@
   transition: transform 0.3s;
 }
 
-.submit:hover {
-  transform: scale(1.2);
-}
-
 .cancel {
   background-color: white;
   border: 2px solid black;
   transition: transform 0.3s, background-color 0.3s, color 0.3s;
-}
-
-.cancel:hover {
-  transform: scale(1.2);
-  background-color: black;
-  color: white;
 }
 
 /* Form Edit and Delete */
@@ -277,7 +267,7 @@
   margin: 0 10px;
   background-color: white;
   position: relative;
-  padding: 20px 20px;
+  padding: 30px 30px;
   border-radius: 4px;
 }
 
@@ -285,6 +275,14 @@
   flex-direction: column;
   justify-content: flex-start;
   row-gap: 20px;
+}
+
+.form-edit p {
+  font-size: 20px;
+}
+
+.form-edit input {
+  font-size: 18px;
 }
 
 .form-edit .form-name {
@@ -465,6 +463,16 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 20px;
+  }
+
+  .cancel:hover {
+    transform: scale(1.2);
+    background-color: black;
+    color: white;
+  }
+
+  .submit:hover {
+    transform: scale(1.2);
   }
 
   .content-container {
