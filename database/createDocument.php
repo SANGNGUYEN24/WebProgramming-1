@@ -152,62 +152,143 @@ function findAllStudentIds(){
     }
 }
 
-// Create 10 questions for each quiz
+// Create 5 questions for each quiz
 function createQuestionData($courseId,$quizId){
 
     global $questionCollection;
 
     $questionArray = array();
     
-    // level = 0 -> easy, 1 -> medium, 2 -> hard
-    // 5 easy questions
-    for ($i = 1; $i <= 5; $i++){
+    // level = 1 -> easy, 2 -> medium, 3 -> hard
+    // question 1
+        // $questionArray[]=[
+        // "description" => "Name space are offered in?",
+        // "level" => (int) 1,
+        //     "unitScore" => (int) 10,
+        //     "option1" => "PHP 6",
+        //     "option2" => "PHP 5",
+        //     "option3" => "PHP 4",
+        //     "option4" => "PHP 3",
+        //     "quizId" => $quizId,
+        //     "courseId" => $courseId,
+        // ];
+        // // question 2
+        // $questionArray[] =[
+        //     "description" => "Member variables of a class are known as?",
+        //     "level" => (int) 1,
+        //     "unitScore" => (int) 10,
+        //     "option1" => "All of the answers",
+        //     "option2" => "Attributes",
+        //     "option3" => "Properties",
+        //     "option4" => "Instances",
+        //     "quizId" => $quizId,
+        //     "courseId" => $courseId,
+        // ];
+        // // question 3
+        // $questionArray[] = [
+        //     "description" => "When function have same prototype in base class as 
+        //     well as in derived class the function is called?",
+        //     "level" => (int) 2,
+        //     "unitScore" => (int) 20,
+        //     "option1" => "Overriding functions",
+        //     "option2" => "Overloading functions",
+        //     "option3" => "Chained functions",
+        //     "option4" => "All of them",
+        //     "quizId" => $quizId,
+        //     "courseId" => $courseId,
+        // ];
+        
+        // // question 4
+        // $questionArray[] = [
+        //     "description" => ": Which version of PHP support get_declared_classes ( ) function??",
+        //     "level" => (int) 2,
+        //     "unitScore" => (int) 20,
+        //     "option1" => "PHP 4.0.0",
+        //     "option2" => "PHP 5.0.1",
+        //     "option3" => "PHP 3.0.0",
+        //     "option4" => "PHP 6",
+        //     "quizId" => $quizId,
+        //     "courseId" => $courseId,
+        // ];
+        
+        // // question 5
+        // $questionArray[] = [
+        //     "description" => "TextUtils and TextUtils_WordCounter classes are those which belongs to?",
+        //     "level" => (int) 3,
+        //     "unitScore" => (int) 30,
+        //     "option1" => "Pear package",
+        //     "option2" => "Inherited package",
+        //     "option3" => "Multi-inherited package",
+        //     "option4" => "None of them",
+        //     "quizId" => $quizId,
+        //     "courseId" => $courseId,
+        // ];
+        
         $questionArray[]=[
-            "questionNumber" => $i,
-            "description" => "What is the birthday of Ho Chi Minh president?",
-            "level" => (int) 0,
-            "unitScore" => (double) 1.00,
-            "option1" => "19/05/1890",
-            "option2" => "15/09/1890",
-            "option3" => "09/05/1891",
-            "option4" => "05/09/1891",
+        "description" => "Name space are offered in?",
+        "level" => (int) 1,
+            "unitScore" => (int) 10,
+            "option1" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option2" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option3" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option4" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
             "quizId" => $quizId,
             "courseId" => $courseId,
         ];
-    }
-    // 3 medium questions
-    for ($i = 6; $i <= 8; $i++){
+        // question 2
         $questionArray[] =[
-            "questionNumber" => $i,
-            "description" => "What is the birthday of Ho Chi Minh president?",
+            "description" => "Member variables of a class are known as?",
             "level" => (int) 1,
-            "unitScore" => (double) 1.00,
-            "option1" => "19/05/1890",
-            "option2" => "15/09/1890",
-            "option3" => "09/05/1891",
-            "option4" => "05/09/1891",
+            "unitScore" => (int) 10,
+            "option1" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option2" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option3" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option4" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
             "quizId" => $quizId,
             "courseId" => $courseId,
         ];
-    }
-    // 2 hard questions
-    for ($i = 9; $i <= 10; $i++){
+        // question 3
         $questionArray[] = [
-            "questionNumber" => $i,
-            "description" => "What is the birthday of Ho Chi Minh president?",
+            "description" => "When function have same prototype in base class as 
+            well as in derived class the function is called?",
             "level" => (int) 2,
-            "unitScore" => (double) 1.00,
-            "option1" => "19/05/1890",
-            "option2" => "15/09/1890",
-            "option3" => "09/05/1891",
-            "option4" => "05/09/1891",
+            "unitScore" => (int) 20,
+            "option1" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option2" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option3" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option4" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
             "quizId" => $quizId,
             "courseId" => $courseId,
         ];
-    }
+        
+        // question 4
+        $questionArray[] = [
+            "description" => ": Which version of PHP support get_declared_classes ( ) function??",
+            "level" => (int) 2,
+            "unitScore" => (int) 20,
+            "option1" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option2" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option3" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option4" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "quizId" => $quizId,
+            "courseId" => $courseId,
+        ];
+        
+        // question 5
+        $questionArray[] = [
+            "description" => "TextUtils and TextUtils_WordCounter classes are those which belongs to?",
+            "level" => (int) 3,
+            "unitScore" => (int) 30,
+            "option1" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option2" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option3" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "option4" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 🎋🎍🎗🎏(￣3￣)╭\(￣︶￣*\))!(*￣(￣　*)(∪.∪ )...zzzo(*￣▽￣)ブ ΠΖΘΜΧΨ↮↚↘↡↓↑",
+            "quizId" => $quizId,
+            "courseId" => $courseId,
+        ];
     $questionCollection->insertMany($questionArray);
 
-    echo "<br>Created 10 questions for quizId: " . $quizId . " courseId: " . $courseId;
+    echo "<br>Created 5 questions for quizId: " . $quizId . " courseId: " . $courseId;
 }
 
 // Create a doc in mark collection with a given studentId, a given quizId
