@@ -104,10 +104,10 @@
                   <p class="post-date" style="color:red">Deadline: '.$getQuizInfo->dueDate.'</p>' ?>
                   <?php
                     $now = time();
-                    $getDate = (string)$getQuizInfo->dueDate;
+                    $getDate = $getQuizInfo->dueDate;
 
                     $date = date($getDate);
-                    
+                   
                     if ($date <= strtotime($now)) {
                       echo '<p class="post-date" style="color:red">The deadline for this quiz is over</p>
                       <a href="gamescreen.php" class="btn btn-warning">Review</a>';

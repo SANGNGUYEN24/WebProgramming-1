@@ -102,25 +102,17 @@ function optionSelected(answer){
     if(userAns == correcAns){ //if user selected option is equal to array's correct answer
         useranswers.push("true");
         //answer.classList.add("correct"); //adding green color to correct selected option
-<<<<<<< HEAD
-        console.log("Correct Answer");
-    }else{
-        useranswers.push("false");
-        //answer.classList.add("incorrect"); //adding red color to correct selected option
-        console.log("Wrong Answer");
-=======
         //console.log("Correct Answer");
     }else{
         useranswers.push("false");
         //answer.classList.add("incorrect"); //adding red color to correct selected option
         //console.log("Wrong Answer");
->>>>>>> 95ee538b8bd2714d990c89d21bc448aeed5efdcb
 
         for(i=0; i < allOptions; i++){
             if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer 
                 //option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
                 //useranswers.push('false');
-                console.log("Auto selected correct answer.");
+                //console.log("Auto selected correct answer.");
             }
         }
     }
