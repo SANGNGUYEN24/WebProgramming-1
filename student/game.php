@@ -9,6 +9,7 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == NULL) {
         header('Location: ../login/');
     }
 }
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 include '../connect.php';
 if (isset($_GET['id'])) {
     $quizID = $_GET['id'];
@@ -20,6 +21,23 @@ if (isset($_GET['id'])) {
     if (empty($results)) {
         header('Location: ./selection.php');
     } else {
+        $quizInfo = getQuiz($quizID);
+        $dealine = $quizInfo->dueDate;
+
+        $now = time();
+        $dateCreate = DateTime::createFromFormat('d/m/Y',$dealine);
+        $array = (array)$dateCreate;
+        $getDeadline = $array['date'];
+        $time = strtotime(strval($getDeadline));
+
+        if ($time <= $now){
+            echo '<script language="javascript">';
+            echo 'alert("The deadline for this quiz is over")';
+            //echo 'window.location.replace("localhost/webprogramming/student/selection.php/")';
+            echo '</script>';
+            header('Location: ./selection.php');
+        }
+
         $post = $db->question;
         $result = $post->find(['quizId' => $quizID]);
     }
@@ -193,7 +211,7 @@ if (isset($_POST['score'])) {
 
     $search = $db->mark;
     $res = $search->findOne(['studentId'=>$studentID, 'quizId'=>$quizID]);
-    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    
     if (empty($res)){
         $insertResult = $db->mark;
         $insertResult->insertOne([

@@ -80,18 +80,24 @@
                   <p class="post-date">Course: <a href="search_processing.php?item='.getCourse($getQuizInfo->courseId)->name.'">'.getCourse($getQuizInfo->courseId)->name.'</a> ('.$getQuizInfo->courseId.')</p>
                   <p class="post-date">Created by: <a href="search_processing.php?item='.getTeacher($getQuizInfo->teacherId)->name.'">'.getTeacher($getQuizInfo->teacherId)->name.'</a></p>
                   <p class="post-date" style="color:green">Score: '.$row->score.'</p>
-                  <p class="post-date" style="color:red">Deadline: '.$getQuizInfo->dueDate.'</p>' ?>
+                  ' ?>
                   <?php
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
                     $now = time();
-                    $getDate = (string)$getQuizInfo->dueDate;
+                    $getDate = $getQuizInfo->dueDate;
 
-                    $date = date($getDate);
+                    $dateCreate = DateTime::createFromFormat('d/m/Y',$getDate);
+
+                    $array = (array)$dateCreate;;
+                    $getDeadline = $array['date'];
+                    $time = strtotime(strval($getDeadline));
                     
-                    if ($date <= strtotime($now)) {
-                      echo '<p class="post-date" style="color:red">The deadline for this quiz is over</p>
-                      <a href="gamescreen.php" class="btn btn-warning">Review</a>';
+                    if ($time<= $now) {
+                      echo '<p class="post-date" style="color:red">Deadline: '.$getQuizInfo->dueDate.'(over)</p>
+                      <a href="result.php?quizID='.$row->quizId.'" class="btn btn-warning">Review</a>';
                     } else {
                       echo '
+                      <p class="post-date" style="color:red">Deadline: '.$getQuizInfo->dueDate.'</p>
                       <a href="game.php?id='.$row->quizId.'" class="btn btn-secondary">Do it</a>';
                     }
                   ?>
