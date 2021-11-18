@@ -75,15 +75,16 @@ if (isset($_GET['id'])) {
     </div>
 
     <!-- Quiz Box -->
-    <div class="quiz_box">
-        <header>
+    <div class="head">
             <div class="title">QUIZ NAME</div>
             <div class="timer">
                 <div class="time_left_txt">Time Left</div>
-                <div class="timer_sec">5</div>
+                <div class="timer_sec">15</div>
             </div>
             <div class="time_line"></div>
-        </header>
+    </div>
+
+    <div class="quiz_box">
         <section>
             <div class="que_text">
                 <!-- Here I've inserted question from JavaScript -->
