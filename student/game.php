@@ -55,7 +55,7 @@ if (isset($_GET['id'])) {
     </div>
 
     <div class="home_btn">
-        <button><a href="index.php">Back to Home</a></button>
+        <button><a href="viewscore.php">Back to Home</a></button>
     </div>
 
     <!-- Info Box -->

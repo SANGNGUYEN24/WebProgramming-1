@@ -65,6 +65,7 @@ if (isset($_GET['quizID'])) {
             <div class="full-results">
                 <table id="fullResults" class='results-table'>
                     <thead>
+                        <th>No.</th>
                         <th>Question</th>
                         <th>Correct Answer</th>
                     </thead>
@@ -72,6 +73,7 @@ if (isset($_GET['quizID'])) {
                         <?php
                             $findQuestion = $db->question;
                             $question = $findQuestion->find(['quizId' => $quizID]);
+                            $k = 1;
                             foreach ($question as $row) {
                                 if ($resultArr[strval($row->_id)] == 'true') {
                                     echo '<tr class="right">';
@@ -80,6 +82,9 @@ if (isset($_GET['quizID'])) {
                                 }
                                 echo '
                                     <td>
+                                        '.$k.'
+                                    </td>
+                                    <td>
                                         '.$row->description.'
                                     </td>
                                     <td>
@@ -87,6 +92,7 @@ if (isset($_GET['quizID'])) {
                                     </td>
                                     </tr>
                                     ';
+                                    $k += 1;
                                 }
                             ?>
                         
@@ -94,7 +100,7 @@ if (isset($_GET['quizID'])) {
                 </table>
             </div>
             <p>
-                <a class="back-to-home" href="index.php">Back to Home</a>
+                <a class="back-to-home" href="viewscore.php">Back to Home</a>
             </p>
         </section>
         <!-- <audio  id="music">
