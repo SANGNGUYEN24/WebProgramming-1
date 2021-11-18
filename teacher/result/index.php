@@ -23,23 +23,18 @@
               $studentCollection = $mydb->student;
 
               // Get marks of the quiz:
-              $marks = $markCollection->find(['quizID' => $_SESSION["quizID"]]);
+              $marks = $markCollection->find(['quizId' => $_SESSION["quizId"]]);
 
               $index = 0;
               foreach ($marks as $mark) {
-                $student = $studentCollection->findOne(['studentID' => $mark->studentID]);
-                echo "<tr class='row100 body'>";
-                echo "<td class='cell100 column1'>" . ++$index . "</td>";
-                echo "<td class='cell100 column2'>" . $student->name . "</td>";
-                echo "<td class='cell100 column3'>" . $mark->score . "</td>";
-                echo "</tr>";
+                $student = $studentCollection->findOne(['studentId' => $mark->studentId]);
+                echo "<tr class='row100 body'>
+                        <td class='cell100 column1'>" . ++$index . "</td>
+                        <td class='cell100 column2'>" . $student->name . "</td>
+                        <td class='cell100 column3'>" . $mark->score . "</td>
+                      </tr>";
               }
               ?>
-              <!-- <tr class='row100 body'>
-                <td class='cell100 column1'>ASDWADW</td>
-                <td class='cell100 column2'>ASDWADW</td>
-                <td class='cell100 column3'>ASDWADW</td>
-              </tr> -->
             </tbody>
           </table>
         </div>

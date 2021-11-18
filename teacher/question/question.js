@@ -5,7 +5,7 @@ let toggle = false;
 let height = window.innerWidth < 768 ? "656px" : "386px";
 let padding = window.innerWidth < 768 ? "12px" : "20px";
 
-// reset state when resize
+// Reset state when resize
 window.addEventListener("resize", () => {
   toggle = false;
   form.style.opacity = 0;
@@ -18,7 +18,7 @@ window.addEventListener("resize", () => {
   height = window.innerWidth < 768 ? "656px" : "386px";
 });
 
-// create button event in add question form
+// Create button event in add question form
 createBtn.addEventListener("click", () => {
   toggle = !toggle;
   if (toggle) {
@@ -54,7 +54,6 @@ let formWrapper = document.querySelector(".form-wrapper");
 // without formEdit cannot run ???????
 let formEdit = document.querySelector(".form-edit");
 let textarea = formEdit.getElementsByTagName("textarea");
-let option = formEdit.querySelectorAll("option");
 let input = formEdit.getElementsByTagName("input");
 
 // Cancel event in edit form
@@ -86,9 +85,9 @@ for (let i = 0; i < editBtn.length; i++) {
     textarea[4].value = hiddenInput[4].value;
 
     // Pass the level
-    if (hiddenInput[5].value == "0") {
+    if (hiddenInput[5].value == "1") {
       option[0].selected = true;
-    } else if (hiddenInput[5].value == "1") {
+    } else if (hiddenInput[5].value == "2") {
       option[1].selected = true;
     } else option[2].selected = true;
 
@@ -96,3 +95,4 @@ for (let i = 0; i < editBtn.length; i++) {
     input[0].value = hiddenInput[6].value;
   });
 }
+

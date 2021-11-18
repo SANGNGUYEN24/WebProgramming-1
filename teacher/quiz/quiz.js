@@ -8,7 +8,7 @@ let count = 1;
 let initWrapper = form.querySelector(".form-wrapper");
 let wrapperHeight = initWrapper.clientHeight;
 
-// calculating add quiz form height
+// Calculating add quiz form height
 if (window.innerWidth < 768) {
   height = 860;
 } else {
@@ -23,7 +23,7 @@ if (window.innerWidth < 417) {
   height += 60;
 }
 
-// reset state when resize
+// Reset state when resize
 window.addEventListener("resize", () => {
   toggle = false;
   form.style.opacity = 0;
@@ -33,7 +33,7 @@ window.addEventListener("resize", () => {
   initWrapper = form.querySelector(".form-wrapper");
   initRemove = initWrapper.getElementsByClassName("fa-close");
 
-  // calculating add quiz form height
+  // Calculating add quiz form height
   wrapperHeight = initWrapper.clientHeight;
   if (window.innerWidth < 768) {
     height = 860 + wrapperHeight * (count - 1);
@@ -50,7 +50,7 @@ window.addEventListener("resize", () => {
   }
 });
 
-// create button event in add quiz form
+// Create button event in add quiz form
 createBtn.addEventListener("click", () => {
   toggle = !toggle;
   if (toggle) {
@@ -79,8 +79,7 @@ let ipCount = document.querySelector(".ipCount");
 
 // Add more question
 addBtn.addEventListener("click", () => {
-  count++;
-  ipCount.value = count;
+  ipCount.value = ++count;
   let wrapper = document.createElement("div");
   wrapper.className = "form-wrapper";
   wrapper.innerHTML = `
@@ -93,12 +92,10 @@ addBtn.addEventListener("click", () => {
       <div class="form-input">
         <textarea name="description-${count}" rows="2" placeholder="Question Description" required></textarea>
         <div class="form-select">
-          <input type="hidden" name="level">
           <select name="lvlOption-${count}" required>
-            <option style="display: none">Level:</option>
-            <option value="0">Easy</option>
-            <option value="1">Medium</option>
-            <option value="2">Hard</option>
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
           </select>
         </div>
       </div>
@@ -130,13 +127,11 @@ addBtn.addEventListener("click", () => {
 
   wrapper = form.getElementsByClassName("form-wrapper");
   wrapper = wrapper[wrapper.length - 1];
-  console.log(wrapper);
 
   // Add remove icon event
   wrapper.querySelector(".fa-minus-circle").addEventListener("click", () => {
     wrapper.remove();
-    count--;
-    ipCount.value = count;
+    ipCount.value = --count;
     height -= wrapperHeight;
     form.style.height = `${height}px`;
     let counting = document.getElementsByClassName("count");
@@ -150,11 +145,11 @@ let selectDate = document.getElementsByClassName("select-date");
 let dateChange = 0;
 let wrong = true;
 
-// validate date function
+// Validate date function
 // Compare start date vs due date
 const validateDate = () => {
   if (
-    new Date(selectDate[0].value).getTime() >
+    new Date(selectDate[0].value).getTime() > 
     new Date(selectDate[1].value).getTime()
   ) {
     wrong = true;

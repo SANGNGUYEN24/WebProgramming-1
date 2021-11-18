@@ -1,14 +1,12 @@
 <?php
 function random_course_id()
 {
-  $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  $chars = "C-";
   $numbers = "0123456789";
-  // Course ID contains 6 characters included 2 for chars and 4 for numbers
-  $courseID = substr(str_shuffle($chars), 0, 2) . substr(str_shuffle($numbers), 0, 4);
-  return $courseID;
+  $courseId =  $chars . substr(str_shuffle($numbers), 0, 10);
+  return $courseId;
 }
-// $temp = new MongoDB\BSON\ObjectId("5a2493c33c95a1281836eb6a");
-// echo $temp;
+
 // Handle submit add course:
 if (isset($_POST['btnAddCourse'])) {
   $courseName = $_POST['ipCourseName'];
@@ -19,37 +17,28 @@ if (isset($_POST['btnAddCourse'])) {
   $courseCollection = $mydb->course;
 
   // Create new course id by random function:
-  $newCourseID = random_course_id();
+  $newCourseId = random_course_id();
 
   // Add new course to Course collection: 
   $addResult = $courseCollection->insertOne([
-    'courseID' => $newCourseID,
+    'courseId' => $newCourseId,
     'name' => $courseName,
     'year' => date("Y"),
-    'semester' => '211',
   ]);
 
   // Get teacher collection:
   $teacherCollection = $mydb->teacher;
 
-  // Get courseIDs created by current teacher ID 
-  $teacher = $teacherCollection->findOne(['teacherID' => $_SESSION["teacherID"]]);
-  $teacherCourseIDs = $teacher->courseID;
-
-  // Filter and Update teacherCourseIDs to array:
-  $filterCourseIDs = array($newCourseID);
-  foreach ($teacherCourseIDs as $teacherCourseID) {
-    array_push($filterCourseIDs, $teacherCourseID);
-  }
+  // Get updates courseIds for teacher:
+  $teacher = $teacherCollection->findOne(['teacherId' => $_SESSION["teacherId"]]);
+  $teacherCourseIds = iterator_to_array($teacher->courseIds);
+  array_push($teacherCourseIds, $newCourseId);
 
   // Update to teacher collection:
   $updateResult = $teacherCollection->updateOne(
-    ['teacherID' => $teacher->teacherID],
-    ['$set' => ['courseID' => $filterCourseIDs]]
+    ['teacherId' => $teacher->teacherId],
+    ['$set' => ['courseIds' => $teacherCourseIds]]
   );
-
-  // Prevent resubmission form:
-  header("Location: ./");
 }
 ?>
 
@@ -62,7 +51,7 @@ if (isset($_POST['btnAddCourse'])) {
     <p class="wrong"></p>
   </div>
   <input type="text" name="ipCourseName" class="input" placeholder="Course Name" />
-  <input type="hidden" name="courseID">
+  <input type="hidden" name="courseId">
   <div class="form-button">
     <div class="cancel">Cancel</div>
     <button type="submit" class="submit" name="btnAddCourse">Submit</button>
@@ -72,99 +61,77 @@ if (isset($_POST['btnAddCourse'])) {
 <h1><?php echo $title; ?></h1>
 
 <div class="form-wrapper">
-<form class="form-edit">
-  <div class="form-header">
-    <div class="form-title">Edit name</div>
-    <p class="wrong"></p>
-  </div>
-  <input type="text" name="ipCourseName" class="input" placeholder="Course Name" />
-  <input type="hidden" name="courseID">
-  <input type="hidden" name="type" value="1">
-  <div class="form-button">
-    <div class="cancel">Cancel</div>
-    <button type="submit" class="submit" name="btnEditCourse">Submit</button>
-  </div>
-</form>
+  <form class="form-edit">
+    <div class="form-header">
+      <div class="form-title">Edit name</div>
+      <p class="wrong"></p>
+    </div>
+    <input type="text" name="ipCourseName" class="input" placeholder="Course Name" />
+    <input type="hidden" name="courseId">
+    <div class="form-button">
+      <div class="cancel">Cancel</div>
+      <button type="submit" class="submit" name="btnEditCourse">Submit</button>
+    </div>
+  </form>
 </div>
 
 <div class="form-wrapper">
-<form class="form-delete">
-  <p style="text-align: center">Do you want to delete this course ?</p>
-  <div class="form-button">
-    <div class="cancel">Cancel</div>
-    <button type="submit" class="submit" name="btnDeleteCourse">Submit</button>
-    <input type="hidden" name="courseID">
-    <input type="hidden" name="type" value="2">
-  </div>
-</form>
+  <form class="form-delete">
+    <p style="text-align: center">Do you want to delete this course ?</p>
+    <div class="form-button">
+      <div class="cancel">Cancel</div>
+      <button type="submit" class="submit" name="btnDeleteCourse">Submit</button>
+      <input type="hidden" name="courseId">
+    </div>
+  </form>
 </div>
 
 <div class="content-container">
-  <!-- Fake card for testing -->
-
-  <!-- <div class='card'>
-    <div class='card-image'>
-      <img src='../assets/course.png' alt=''>
-    </div>
-    <div class='card-content'>
-      <p class="course-name">temp</p>
-      <div class="content-bottom">
-        <a href='./?page=quiz'><button>View</button></a>
-        <div class="drop-down">
-          <i class="fas fa-ellipsis-v"></i>
-          <div class="drop-down-list">
-            <p class="edit">Edit name</p>
-            <p class="delete">Delete course</p>
-          </div>
-          <input type="hidden" name="courseID" value="1" >
-        </div>
-      </div>
-    </div>
-  </div>  -->
-
   <?php
   // Get teacher and course collections
   $teacherCollection = $mydb->teacher;
   $courseCollection = $mydb->course;
 
-  // Get courseIDs created by teacher
-  $teacher = $teacherCollection->findOne(['teacherID' => $_SESSION["teacherID"]]);
-  $courseIDs = $teacher->courseID;
+  // Get courseIds created by teacher
+  $teacher = $teacherCollection->findOne(['teacherId' => $_SESSION["teacherId"]]);
+  $courseIds = $teacher->courseIds;
 
   // Loop to get courses created by teacher
   $teacherCourses = array();
-  foreach ($courseIDs as $courseID) {
-    $result = $courseCollection->findOne(['courseID' => $courseID]);
-    $course = array("courseID" => $result->courseID, "name" => $result->name, "year" => $result->year, "semester" => $result->semester);
+  foreach ($courseIds as $courseId) {
+    $course = $courseCollection->findOne(['courseId' => $courseId]);
     array_push($teacherCourses, $course);
   }
 
   // Render courses to card
-
-  // line 153 TODO: push value courseID
   foreach ($teacherCourses as $teacherCourse) {
     echo "
-      <div class='card'>
+      <form class='card' method='POST' action='./?page=quiz&courseName=" . $teacherCourse->name . "'>
         <div class='card-image'>
           <img src='../assets/course.png' alt=''>
         </div>
         <div class='card-content'>
-          <p class='course-name'>$teacherCourse[name]</p>
+          <p class='course-name'>" . $teacherCourse->name . "</p>
           <div class='content-bottom'>
-            <a href='./?page=quiz&courseID=courseID'><button>View</button></a>
+            <button type='submit' name='btnCourseId'>View</button>
             <div class='drop-down'>
               <i class='fas fa-ellipsis-v'></i>
               <div class='drop-down-list'>
                 <p class='edit'>Edit name</p>
                 <p class='delete'>Delete course</p>
               </div>
-              <input type='hidden' name='courseID' value='1' >
+              <input type='hidden' name='courseId' value='" . $teacherCourse->courseId . "' >
             </div>
           </div>
         </div>
-      </div> 
+      </form> 
     ";
   }
   ?>
 </div>
 <script src="./course/course.js"></script>
+<script>
+  window.onload = function() {
+    history.replaceState("", "", "./");
+  }
+</script>

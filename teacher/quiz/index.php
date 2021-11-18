@@ -6,52 +6,40 @@ $quizCollection =  $mydb->quiz;
 // Random Quiz ID:
 function random_quiz_id()
 {
-  $chars = "Q";
+  $chars = "Q-";
   $numbers = "0123456789";
-  // Course ID contains 6 characters included 2 for chars and 4 for numbers
-  $quizId = $chars . substr(str_shuffle($numbers), 0, 4);
+  $quizId = $chars . substr(str_shuffle($numbers), 0, 10);
   return $quizId;
 };
 
 if (isset($_POST['btnAddQuiz'])) {
   // Insert Quiz
-  $quizID = random_quiz_id();
-  $quizName = $_POST['quizName'];
+  $quizId = random_quiz_id();
   $insertQuiz = $quizCollection->insertOne([
-    'quizID' => $quizID, //quizId
-    'teacherID' => $_SESSION['teacherID'], //teacherId
-    'courseID' => $_SESSION['courseID'],  //courseId
-    'name' => $quizName,
-    'startDate' => date("Y"),
-    'dueDate' => date("Y"),
+    'quizId' => $quizId,
+    'teacherId' => $_SESSION['teacherId'],
+    'courseId' => $_SESSION['courseId'],
+    'name' => $_POST['quizName'],
+    'startDate' => $_POST['startDate'],
+    'dueDate' => $_POST['dueDate'],
   ]);
 
   $countQuestions = (int) $_POST['countQuestions'];
   // Insert Questions:
   for ($i = 0; $i < $countQuestions; $i++) {
-    $description = htmlspecialchars($_POST['description-' . $i + 1]);
-    $option1 = htmlspecialchars($_POST['option1-' . $i + 1]);
-    $option2 = htmlspecialchars($_POST['option2-' . $i + 1]);
-    $option3 = htmlspecialchars($_POST['option3-' . $i + 1]);
-    $option4 = htmlspecialchars($_POST['option4-' . $i + 1]);
-    $level = $_POST['lvlOption-' . $i + 1];
-
     $insertQuestion = $questionCollection->insertOne([
       'questionNumber' => $i + 1,
-      'quizID' => $quizID, //quizId
-      'courseID' => $_SESSION['courseID'],  //courseId
-      'description' => $description,
-      'option1' => $option1,
-      'option2' => $option2,
-      'option3' => $option3,
-      'option4' => $option4,
-      'level' => $level,
-      'unitScore' => round(10 / $countQuestions, 2),
+      'quizId' => $quizId,
+      'courseId' => $_SESSION['courseId'],
+      'description' => htmlspecialchars($_POST['description-' . $i + 1]),
+      'option1' => htmlspecialchars($_POST['option1-' . $i + 1]),
+      'option2' => htmlspecialchars($_POST['option2-' . $i + 1]),
+      'option3' => htmlspecialchars($_POST['option3-' . $i + 1]),
+      'option4' => htmlspecialchars($_POST['option4-' . $i + 1]),
+      'level' => $_POST['lvlOption-' . $i + 1],
+      'unitScore' => (int) $_POST['lvlOption-' . $i + 1] * 10,
     ]);
   }
-
-  // Prevent resubmission form:
-  header("Location: ./");
 }
 ?>
 
@@ -65,11 +53,11 @@ if (isset($_POST['btnAddQuiz'])) {
       <div class="date-flex">
         <div class="date">
           <p>Start Date </p>
-          <input type="date" name="date" placeholder="Select Date" class="select-date" required>
+          <input type="date" name="startDate" class="select-date" placeholder="Select Date" required>
         </div>
         <div class="date">
           <p>Due Date </p>
-          <input type="date" name="date" placeholder="Select Date" class="select-date" required>
+          <input type="date" name="dueDate" class="select-date" placeholder="Select Date" required>
         </div>
       </div>
       <span class="wrong"></span>
@@ -84,12 +72,10 @@ if (isset($_POST['btnAddQuiz'])) {
       <div class="form-input">
         <textarea name="description-1" rows="2" placeholder="Question Description" required></textarea>
         <div class="form-select">
-          <input type="hidden" name="level">
           <select name="lvlOption-1">
-            <option style="display: none">Level:</option>
-            <option value="0">Easy</option>
-            <option value="1">Medium</option>
-            <option value="2">Hard</option>
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
           </select>
         </div>
       </div>
@@ -131,22 +117,27 @@ if (isset($_POST['btnAddQuiz'])) {
   $quizCollection = $mydb->quiz;
 
   // Get quizzes based on courseID and teacherID
-  $quizzes = $quizCollection->find(['courseID' => $_SESSION["courseID"], 'teacherID' => $_SESSION["teacherID"]]);
+  $quizzes = $quizCollection->find(['courseId' => $_SESSION["courseId"], 'teacherId' => $_SESSION["teacherId"]]);
 
-  // line 141 TODO: push value quizID
   foreach ($quizzes as $quiz) {
-    echo '<div class="card">
+    echo '<form class="card" action="./?page=question&quizName=' . $quiz->name . '" method="POST">
             <div class="card-top">
                 <p>' . $quiz->name . '</p>
-                <button><a href="./?page=question&quizID=quizID">VIEW</a></button>
+                <button type="submit" name="btnQuizId">VIEW</button>
             </div>
             <div class="card-bot">
               <p class="date">' . $quiz->startDate . '</p>
               <div class="horizon-line"></div>
               <p class="date">' . $quiz->dueDate . '</p>
             </div>
-          </div>';
+            <input type="hidden" name="quizId" value="' . $quiz->quizId . '"></input>
+          </form>';
   }
   ?>
 </div>
 <script src="./quiz/quiz.js"></script>
+<script>
+  window.onload = function() {
+    history.replaceState("", "", "./?page=quiz");
+  }
+</script>

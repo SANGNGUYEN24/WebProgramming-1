@@ -279,8 +279,13 @@
   background-color: #23d9a2;
   border-radius: 8px;
   border: none;
-  padding: 8px 0px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 21px;
+  color: white;
+  padding: 8px 20px;
   transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
 }
 
 .card-top button:hover {
@@ -289,17 +294,6 @@
 
 .card-top button:active {
   transform: scale(0.9);
-}
-
-.card-top button a {
-  width: 100%;
-  height: 100%;
-  padding: 8px 20px;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 21px;
-  text-decoration: none;
-  color: white;
 }
 
 .card-bot {
