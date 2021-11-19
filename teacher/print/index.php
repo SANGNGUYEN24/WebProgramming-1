@@ -1,7 +1,7 @@
 <?php 
   session_start();
 ?>
-<!-- Test git fetch -->
+<!-- Test git fetch now -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
