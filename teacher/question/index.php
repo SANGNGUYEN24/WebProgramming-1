@@ -88,8 +88,8 @@
     <button class="view">View results</button>
   </a>
   <!-- <button class="download">Download </button> -->
-  <button class="download"><a href ="./question/pdf.php">Download PDF</a></button>
-  <!-- <?php echo "<button class=\"download\" onClick=\"window.print();\">Download PDF</button>";?> -->
+  <!-- <button class="download"><a href ="./question/pdf.php">Download PDF</a></button> -->
+  <?php echo "<button class=\"download\" onClick=\"window.print();\">Download PDF</button>";?>
 </div>
 
 <?php
@@ -101,6 +101,29 @@ $questions = $questionCollection->find(['quizID' => $_SESSION["quizID"], 'course
 
 foreach ($questions as $question) {
   echo '<div class="card">
+        <div class="card-top">
+          <p><span>Question ' . $question->questionNumber . ': </span>' . $question->description . '</p>
+          <i class="fa fa-edit">
+            <input type="hidden" value="' . $question->description . '" />
+            <input type="hidden" value="' . $question->firstChoice . '">
+            <input type="hidden" value="' . $question->secondChoice . '">
+            <input type="hidden" value="' . $question->thirdChoice . '">
+            <input type="hidden" value="' . $question->fourthChoice . '">
+            <!-- This is the level -->
+            <input type="hidden" value="2" >
+
+            <!-- This is the Quis ID -->
+            <input type="hidden" value="' . $question->questionNumber . '">
+          </i>
+        </div>
+        <div class="answer">
+          <p class="correct">A: <span>' . $question->firstChoice . '</span></p>
+          <p>B: <span>' . $question->secondChoice . '</span></p>
+          <p>C: <span>' . $question->thirdChoice . '</span></p>
+          <p>D: <span>' . $question->fourthChoice . '</span></p>
+        </div>
+      </div>';
+       echo '<div class="card">
         <div class="card-top">
           <p><span>Question ' . $question->questionNumber . ': </span>' . $question->description . '</p>
           <i class="fa fa-edit">
