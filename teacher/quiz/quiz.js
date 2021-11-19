@@ -5,10 +5,10 @@ let toggle = false;
 let height = 0;
 
 let count = 1;
-let initWrapper = form.querySelector(".form-wrapper");
+let initWrapper = form.querySelector(".question-wrapper");
 let wrapperHeight = initWrapper.clientHeight;
 
-// calculating add quiz form height
+// Calculating add quiz form height
 if (window.innerWidth < 768) {
   height = 860;
 } else {
@@ -23,17 +23,17 @@ if (window.innerWidth < 417) {
   height += 60;
 }
 
-// reset state when resize
+// Reset state when resize
 window.addEventListener("resize", () => {
   toggle = false;
   form.style.opacity = 0;
   form.style.height = 0;
   form.style.zIndex = -10;
   form.style.marginTop = 0;
-  initWrapper = form.querySelector(".form-wrapper");
+  initWrapper = form.querySelector(".question-wrapper");
   initRemove = initWrapper.getElementsByClassName("fa-close");
 
-  // calculating add quiz form height
+  // Calculating add quiz form height
   wrapperHeight = initWrapper.clientHeight;
   if (window.innerWidth < 768) {
     height = 860 + wrapperHeight * (count - 1);
@@ -50,7 +50,7 @@ window.addEventListener("resize", () => {
   }
 });
 
-// create button event in add quiz form
+// Create button event in add quiz form
 createBtn.addEventListener("click", () => {
   toggle = !toggle;
   if (toggle) {
@@ -79,10 +79,9 @@ let ipCount = document.querySelector(".ipCount");
 
 // Add more question
 addBtn.addEventListener("click", () => {
-  count++;
-  ipCount.value = count;
+  ipCount.value = ++count;
   let wrapper = document.createElement("div");
-  wrapper.className = "form-wrapper";
+  wrapper.className = "question-wrapper";
   wrapper.innerHTML = `
     <div class='line'></div>
     <div class="form-header">
@@ -93,12 +92,10 @@ addBtn.addEventListener("click", () => {
       <div class="form-input">
         <textarea name="description-${count}" rows="2" placeholder="Question Description" required></textarea>
         <div class="form-select">
-          <input type="hidden" name="level">
           <select name="lvlOption-${count}" required>
-            <option style="display: none">Level:</option>
-            <option value="0">Easy</option>
-            <option value="1">Medium</option>
-            <option value="2">Hard</option>
+            <option value="1">Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
           </select>
         </div>
       </div>
@@ -128,15 +125,13 @@ addBtn.addEventListener("click", () => {
   form.style.height = `${height}px`;
   form.insertBefore(wrapper, addBtn);
 
-  wrapper = form.getElementsByClassName("form-wrapper");
+  wrapper = form.getElementsByClassName("question-wrapper");
   wrapper = wrapper[wrapper.length - 1];
-  console.log(wrapper);
 
   // Add remove icon event
   wrapper.querySelector(".fa-minus-circle").addEventListener("click", () => {
     wrapper.remove();
-    count--;
-    ipCount.value = count;
+    ipCount.value = --count;
     height -= wrapperHeight;
     form.style.height = `${height}px`;
     let counting = document.getElementsByClassName("count");
@@ -150,7 +145,7 @@ let selectDate = document.getElementsByClassName("select-date");
 let dateChange = 0;
 let wrong = true;
 
-// validate date function
+// Validate date function
 // Compare start date vs due date
 const validateDate = () => {
   if (
@@ -179,5 +174,73 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     document.querySelector(".wrong").innerHTML =
       "Start date cannot be less than due date";
+  }
+});
+
+let formWrapper = document.getElementsByClassName("form-wrapper");
+let editInput = formWrapper[0].getElementsByTagName("input");
+
+let card = document.getElementsByClassName("card");
+let edit = document.getElementsByClassName("edit");
+let remove = document.getElementsByClassName("delete");
+const length = edit.length;
+
+// Edit button is clicked
+// => pass courseID to input, pass courseNAme to input
+for (let i = 0; i < length; i++) {
+  edit[i].addEventListener("click", () => {
+    formWrapper[0].querySelector(".wrong").innerText = "";
+    let input = formWrapper[0].getElementsByTagName("input");
+    // pass clicked course name to edit form
+    input[0].value = card[i].querySelector(".quiz-name").innerText;
+
+    // pass clicked start date and due date to edit form
+    let date = card[i].getElementsByClassName("date");
+    input[1].value = date[0].innerText.replaceAll("/", "-");
+    input[2].value = date[1].innerText.replaceAll("/", "-");
+
+    // pass quizId to edit form
+    input[3].value = card[i].querySelector("input").value;
+
+    console.log(`quizId: ${input[3].value}`);
+    formWrapper[0].style.opacity = 1;
+    formWrapper[0].style.zIndex = 10;
+  });
+}
+
+// Remove button is clicked
+// => pass courseID to input
+for (let i = 0; i < length; i++) {
+  remove[i].addEventListener("click", () => {
+    // pass quizId to delete form
+    formWrapper[1].getElementsByTagName("input")[0].value =
+      card[i].querySelector("input").value;
+
+    console.log(
+      `quizId: ${formWrapper[1].getElementsByTagName("input")[0].value}`
+    );
+    formWrapper[1].style.opacity = 1;
+    formWrapper[1].style.zIndex = 10;
+  });
+}
+
+// Add cancel button eventlistener for all popup form
+formWrapper[0].querySelector(".cancel").addEventListener("click", () => {
+  formWrapper[0].style.opacity = 0;
+  formWrapper[0].style.zIndex = -1;
+});
+
+formWrapper[1].querySelector(".cancel").addEventListener("click", () => {
+  formWrapper[1].style.opacity = 0;
+  formWrapper[1].style.zIndex = -1;
+});
+
+// Check if input is empty for form-edit
+formWrapper[0].addEventListener("submit", (e) => {
+  let input = formWrapper[0].querySelector(".input");
+  if (input.value == "") {
+    e.preventDefault();
+    formWrapper[0].querySelector(".wrong").innerText =
+      "Course name cannot be empty";
   }
 });

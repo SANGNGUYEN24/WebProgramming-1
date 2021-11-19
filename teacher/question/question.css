@@ -160,7 +160,7 @@ button.download {
   padding-bottom: 15px;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  transition: opacity 0.5s;
+  transition: opacity 0.15s, z-index 0.5s;
 }
 
 .form-edit {
