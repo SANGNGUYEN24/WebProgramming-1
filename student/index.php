@@ -97,7 +97,7 @@
                   </div>
                 </div>
                 <div class="body">
-                  <h5 class="post-title"><a href="results.php?quizID='.$row->quizId.'">'.getQuiz($row->quizId)->name.'</a></h5>
+                  <h5 class="post-title">'.getQuiz($row->quizId)->name.'</h5>
                   <p class="post-date">Course: <a href="search_processing.php?item='.getCourse($getQuizInfo->courseId)->name.'">'.getCourse($getQuizInfo->courseId)->name.'</a> ('.$getQuizInfo->courseId.')</p>
                   <p class="post-date">Created by: <a href="search_processing.php?item='.getTeacher($getQuizInfo->teacherId)->name.'">'.getTeacher($getQuizInfo->teacherId)->name.'</a></p>
                   <p class="post-date" style="color:green">Score: '.$row->score.'</p>
@@ -107,19 +107,36 @@
                     $now = time();
                     $getDate = $getQuizInfo->dueDate;
 
-                    $dateCreate = DateTime::createFromFormat('d/m/Y',$getDate);
+                    $dateCreate = DateTime::createFromFormat('Y-m-d',$getDate);
 
                     $array = (array)$dateCreate;
                     $getDeadline = $array['date'];
+
+                    $startDate = $getQuizInfo->startDate;
+
+                    $convertStartDate = DateTime::createFromFormat('Y-m-d',$startDate);
+                    
+                    $startDateArray = (array)$convertStartDate;
+
+                    $getStartDate  =$startDateArray['date'];
+
+                    $start = strtotime($getStartDate);
                     $time = strtotime(strval($getDeadline));
                     
                     if ($time<= $now) {
                       echo '<p class="post-date" style="color:red">Deadline: '.$getQuizInfo->dueDate.'(over)</p>
-                      <a href="result.php?quizID='.$row->quizId.'" class="btn btn-warning">Review</a>';
+                      <a href="results.php?quizID='.$row->quizId.'" class="btn btn-warning">Review</a>';
                     } else {
-                      echo '
-                      <p class="post-date" style="color:red">Deadline: '.$getQuizInfo->dueDate.'</p>
-                      <a href="game.php?id='.$row->quizId.'" class="btn btn-secondary">Do it</a>';
+                      if ($start < $now){
+                        echo '
+                        <p class="post-date" style="color:red">Deadline: '.$getQuizInfo->dueDate.'</p>
+                        <a href="game.php?id='.$row->quizId.'" class="btn btn-secondary">Do it</a>';
+                      } else {
+                        echo'
+                        <p class="post-date" style="color:red">Start from: '.$getQuizInfo->startDate.'</p>
+                        <p class="post-date" style="color:red">This quiz has not started yet.</p>
+                        ';
+                      }
                     }
                   ?>
                   <?php

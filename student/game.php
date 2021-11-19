@@ -25,17 +25,38 @@ if (isset($_GET['id'])) {
         $dealine = $quizInfo->dueDate;
 
         $now = time();
-        $dateCreate = DateTime::createFromFormat('d/m/Y',$dealine);
+        $dateCreate = DateTime::createFromFormat('Y-m-d',$dealine);
         $array = (array)$dateCreate;
         $getDeadline = $array['date'];
         $time = strtotime(strval($getDeadline));
 
+        $startDate = $quizInfo->startDate;
+
+        $convertStartDate = DateTime::createFromFormat('Y-m-d',$startDate);
+        
+        $startDateArray = (array)$convertStartDate;
+
+        $getStartDate  =$startDateArray['date'];
+
+        $start = strtotime($getStartDate);
+
         if ($time <= $now){
             echo '<script language="javascript">';
-            echo 'alert("The deadline for this quiz is over")';
-            //echo 'window.location.replace("localhost/webprogramming/student/selection.php/")';
+            echo '
+                if (confirm("The deadline for this quiz is over")){
+                    document.location.href="./selection.php";
+                }
+            ';
             echo '</script>';
-            header('Location: ./selection.php');
+            //header('Location: ./selection.php');
+        } elseif ($start > $now){
+            echo '<script language="javascript">';
+            echo '
+                if (confirm("This quiz has not started yet")){
+                    document.location.href="./selection.php";
+                }
+            ';
+            echo '</script>';
         }
 
         $post = $db->question;
@@ -153,6 +174,7 @@ if (isset($_GET['id'])) {
     let questions = [
         <?php
         $k = 1;
+
         foreach ($result as $row) {
             echo '
                         {
@@ -193,13 +215,22 @@ if (isset($_POST['score'])) {
     $score  = $_POST['answers'];
     preg_match_all('(true|false)', $score, $matches);
     //var_dump($matches);
-    foreach ($matches[0] as $res) {
+    // foreach ($matches[0] as $res) {
 
-        if ($res == 'true') {
-            $k += 1;
+    //     if ($res == 'true') {
+    //         $k += 1;
+    //     }
+    // }
+    $result = $post->find(['quizId' => $quizID]);
+    $finalScore = 0;
+    $totalScore = 0;
+    foreach ($result as $unitScore){
+        if ($matches[0][$k] == "true"){
+            $finalScore += $unitScore->unitScore;
         }
-    }
-    $finalScore = (float)$k / count($matches[0]) * 10;
+        $totalScore += $unitScore->unitScore;
+        $k += 1;
+    }    
 
     $counter = 0;
 
@@ -217,6 +248,7 @@ if (isset($_POST['score'])) {
         $insertResult->insertOne([
         'studentId' => $studentID,
         'score' => $finalScore,
+        'totalScore'=>$totalScore,
         'quizAnswer' => $resultArr,
         'quizId' => $_GET['id'],
         'dateTaken'=>date('Y-m-d H:i:s')
@@ -226,6 +258,7 @@ if (isset($_POST['score'])) {
             ['studentId' => $studentID, 'quizId'=>$_GET['id']],
             ['$set'=>[
                 'score' => $finalScore,
+                'totalScore' => $totalScore,
                 'quizAnswer'=>$resultArr,
                 'dateTaken'=>date('Y-m-d H:i:s')
             ]]);

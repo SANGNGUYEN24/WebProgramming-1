@@ -21,6 +21,26 @@ if (isset($_GET['quizID'])) {
     if (empty($res)) {
         header('Location: viewscore.php');
     } else {
+        $quizInfo = getQuiz($quizID);
+        $dealine = $quizInfo->dueDate;
+
+        $now = time();
+        $dateCreate = DateTime::createFromFormat('Y-m-d',$dealine);
+        $array = (array)$dateCreate;
+        $getDeadline = $array['date'];
+        $time = strtotime(strval($getDeadline));
+
+        if ($time > $now){
+            echo '<script language="javascript">';
+            echo '
+                if (confirm("The deadline for this quiz is not over yet")){
+                    document.location.href="./viewscore.php";
+                }
+            ';
+            echo '</script>';
+            //header('Location: ./selection.php');
+        }
+
         $getQuizInfo = getQuiz($_GET['quizID']);
         $resultArr = $res->quizAnswer;
         #var_dump($resultArr);
@@ -54,12 +74,12 @@ if (isset($_GET['quizID'])) {
                     <?php echo getTeacher($getQuizInfo->teacherId)->name; ?>
                 </h4>
             </div>
-            <h2 class="result-header">Your total score is</h2>
+            <h2 class="result-header">Your total score is:</h2>
 
         </header>
         <section id="resultsDisplay" class="results-display">
             <h3 class="result-header" id="score">
-                <?php echo $res->score; ?>/10
+                <?php echo $res->score.'/'.$res->totalScore; ?>
             </h3>
 
             <div class="full-results">
@@ -67,7 +87,9 @@ if (isset($_GET['quizID'])) {
                     <thead>
                         <th>No.</th>
                         <th>Question</th>
-                        <th>Correct Answer</th>
+                        <th>Correct answer</th>
+                        <th>Level</th>
+                        <th>Score</th>
                     </thead>
                     <tbody id='tableBody'>
                         <?php
@@ -88,7 +110,36 @@ if (isset($_GET['quizID'])) {
                                         '.$row->description.'
                                     </td>
                                     <td>
-                                        '.$row->option1.';
+                                        '.$row->option1.'
+                                    </td>';
+                                    ?>
+                                    <?php
+                                        if ($row->level == 1){
+                                            echo '
+                                            <td>
+                                                Easy
+                                            </td>
+                                            ';
+                                        }
+                                        if ($row->level == 2){
+                                            echo '
+                                            <td style="color: yellow">
+                                                Medium
+                                            </td>
+                                            ';
+                                        }
+                                        if ($row->level == 3){
+                                            echo '
+                                            <td style="color: red">
+                                                Hard
+                                            </td>
+                                            ';
+                                        }
+                                    ?>
+                                    <?php
+                                echo '
+                                    <td>
+                                        '.$row->unitScore.'
                                     </td>
                                     </tr>
                                     ';
