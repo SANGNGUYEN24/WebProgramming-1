@@ -134,7 +134,9 @@ if (isset($_POST['BtnEditQuestion'])) {
   <a href="./?page=result">
     <button class="view">View results</button>
   </a>
-  <button class="download">Download PDF</button>
+  <a href="./print">
+    <button class="download">Download PDF</button>
+  </a>
 </div>
 
 <?php

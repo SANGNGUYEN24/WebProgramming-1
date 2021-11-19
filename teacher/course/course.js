@@ -3,6 +3,7 @@ let form = document.querySelector(".form-course");
 
 let toggle = false;
 let height = window.innerWidth < 768 ? "180px" : "170px";
+let padding = window.innerWidth < 768 ? "20px" : "40px";
 
 // Reset state when resize
 window.addEventListener("resize", () => {
@@ -10,6 +11,10 @@ window.addEventListener("resize", () => {
   form.style.opacity = 0;
   form.style.height = 0;
   form.style.zIndex = -10;
+  form.style.marginTop = 0;
+  form.style.paddingTop = 0;
+  form.style.paddingBottom = 0;
+  padding = window.innerWidth < 768 ? "20px" : "40px";
   height = window.innerWidth < 768 ? "180px" : "170px";
 });
 
@@ -21,10 +26,16 @@ createBtn.addEventListener("click", () => {
     form.style.height = height;
     form.style.opacity = 1;
     form.style.zIndex = 0;
+    form.style.marginTop = "20px";
+    form.style.paddingTop = padding;
+    form.style.paddingBottom = padding;
   } else {
     form.style.opacity = 0;
     form.style.height = 0;
     form.style.zIndex = -10;
+    form.style.marginTop = 0;
+    form.style.paddingTop = 0;
+    form.style.paddingBottom = 0;
   }
 });
 
@@ -34,6 +45,9 @@ form.querySelector(".cancel").addEventListener("click", () => {
   form.style.opacity = 0;
   form.style.height = 0;
   form.style.zIndex = -10;
+  form.style.marginTop = 0;
+  form.style.paddingTop = 0;
+  form.style.paddingBottom = 0;
 });
 
 let courseName = form.querySelector("input");
@@ -75,7 +89,7 @@ for (let i = 0; i < length; i++) {
 for (let i = 0; i < length; i++) {
   remove[i].addEventListener("click", () => {
     let input = formWrapper[1].getElementsByTagName("input");
-    input[1].value = card[i].querySelector("input").value;
+    input[0].value = card[i].querySelector("input").value;
     formWrapper[1].style.opacity = 1;
     formWrapper[1].style.zIndex = 10;
   });

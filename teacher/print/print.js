@@ -1,0 +1,4 @@
+const print = () => {
+
+  window.print();
+}
