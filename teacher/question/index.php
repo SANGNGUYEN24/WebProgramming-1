@@ -134,9 +134,15 @@ if (isset($_POST['BtnEditQuestion'])) {
   <a href="./?page=result">
     <button class="view">View results</button>
   </a>
+<<<<<<< HEAD
+  <!-- <button class="download">Download </button> -->
+  <!-- <button class="download"><a href ="./question/pdf.php">Download PDF</a></button> -->
+  <?php echo "<button class=\"download\" onClick=\"window.print();\">Download PDF</button>";?>
+=======
   <a href="./print">
     <button class="download">Download PDF</button>
   </a>
+>>>>>>> 489f02f876d4b9e7260e4073fa4166e4decc6754
 </div>
 
 <?php
@@ -170,6 +176,29 @@ foreach ($questions as $question) {
           <p>B: <span>' . $question->option2 . '</span></p>
           <p>C: <span>' . $question->option3 . '</span></p>
           <p>D: <span>' . $question->option4 . '</span></p>
+        </div>
+      </div>';
+       echo '<div class="card">
+        <div class="card-top">
+          <p><span>Question ' . $question->questionNumber . ': </span>' . $question->description . '</p>
+          <i class="fa fa-edit">
+            <input type="hidden" value="' . $question->description . '" />
+            <input type="hidden" value="' . $question->firstChoice . '">
+            <input type="hidden" value="' . $question->secondChoice . '">
+            <input type="hidden" value="' . $question->thirdChoice . '">
+            <input type="hidden" value="' . $question->fourthChoice . '">
+            <!-- This is the level -->
+            <input type="hidden" value="2" >
+
+            <!-- This is the Quis ID -->
+            <input type="hidden" value="' . $question->questionNumber . '">
+          </i>
+        </div>
+        <div class="answer">
+          <p class="correct">A: <span>' . $question->firstChoice . '</span></p>
+          <p>B: <span>' . $question->secondChoice . '</span></p>
+          <p>C: <span>' . $question->thirdChoice . '</span></p>
+          <p>D: <span>' . $question->fourthChoice . '</span></p>
         </div>
       </div>';
 }

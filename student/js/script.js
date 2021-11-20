@@ -112,7 +112,7 @@ function optionSelected(answer){
             if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer 
                 //option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
                 //useranswers.push('false');
-                console.log("Auto selected correct answer.");
+                //console.log("Auto selected correct answer.");
             }
         }
     }
