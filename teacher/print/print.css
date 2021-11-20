@@ -72,3 +72,7 @@ span,
 .correct {
   font-weight: 700;
 }
+
+@media print {
+  * { overflow: visible !important; } 
+}

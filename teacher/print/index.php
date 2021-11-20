@@ -1,7 +1,6 @@
 <?php 
   session_start();
 ?>
-<!-- Test git fetch now -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,7 +135,5 @@
   </div>
 </body>
 </html>
-
-// New comment from Sang
 
 
