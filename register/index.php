@@ -99,9 +99,9 @@
                                 'birthday' =>'', 
                                 'phone'=>'',
                             ]);
-                            echo "Register successfully";
+                            echo "<p class='correct'>Register successfully</p>";
                         } else {
-                            echo "Username already exists";
+                            echo "<p class='wrong'>Username already exists</p>";
                         }
                     } else {
                         $post = $db->student;
@@ -118,7 +118,7 @@
                                 'birthday' =>'', 
                                 'phone'=>'',
                             ]);
-                            echo "Register successfully";
+                            echo "<p class='correct'>Register successfully</p>";
                         } else {
                             echo "<p class='wrong'>Username already exists</p>";
                         }

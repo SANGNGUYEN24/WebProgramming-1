@@ -45,13 +45,13 @@ if ($page == "course") {
 ?>
 
 <?php
-// if (!isset($_SESSION['username']) && $_SESSION['username'] == NULL) {
-//     header('Location: ../login/');
-// } else {
-//     if (isset($_SESSION['isStudent']) && $_SESSION['isStudent'] == true){
-//         header('Location: ../student/');
-//     }
-// }
+if (!isset($_SESSION['username']) && $_SESSION['username'] == NULL) {
+    header('Location: ../login/');
+} else {
+    if (isset($_SESSION['isStudent']) && $_SESSION['isStudent'] == true){
+        header('Location: ../student/');
+    }
+}
 ?>
 
 <!DOCTYPE html>

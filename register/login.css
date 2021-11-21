@@ -163,7 +163,14 @@ input[type="password"].input {
 
 .wrong {
   color: red;
-  font-size: 14px;
+  font-size: 16px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.correct {
+  color: #23d9a2;
+  font-size: 16px;
   margin-top: 16px;
   text-align: center;
 }
