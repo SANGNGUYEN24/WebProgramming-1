@@ -1,4 +1,10 @@
 <?php
+
+// NOTE =====================================================================================
+// Note ===================================================================================
+
+// After edit quiz, delete all student related to that quiz. Same with delete quiz
+
 // Get quiz collection:
 $questionCollection = $mydb->question;
 $quizCollection =  $mydb->quiz;
@@ -41,6 +47,37 @@ if (isset($_POST['btnAddQuiz'])) {
     ]);
   }
 }
+
+if (isset($_POST['btnEditQuiz'])) {
+  $quizCollection->updateOne(
+    ['quizId' => $_POST['quizId']],
+    ['$set' => [
+      'name' => $_POST['editQuizName'],
+      'startDate' => $_POST['editStartDate'],
+      'dueDate' => $_POST['editDueDate']
+    ]]
+  );
+}
+
+if (isset($_POST['btnDeleteQuiz'])) {
+  $targetQuizId = $_POST['quizId'];
+
+  // Get all needed collection:
+  $markCollection = $mydb->mark;
+  $questionCollection = $mydb->question;
+
+  // Delete all marks and questions related to quizId:
+  $markCollection->deleteMany([
+    'quizId' => $targetQuizId
+  ]);
+  $questionCollection->deleteMany([
+    'quizId' => $targetQuizId
+  ]);
+
+  // Delete all quizzes and courseId:
+  $quizCollection->deleteOne(['quizId' => $targetQuizId]);
+}
+
 ?>
 
 <!-- Icon -->
@@ -118,17 +155,17 @@ if (isset($_POST['btnAddQuiz'])) {
     <div class="form-top">
       <div class="form-name">
         <p class="title">Quiz name</p>
-        <input type="text" name="quizName" placeholder="Quiz name" required>
+        <input type="text" name="editQuizName" placeholder="Quiz name" required>
       </div>
       <div>
         <div class="date-flex">
           <div class="date">
             <p>Start Date </p>
-            <input type="date" name="startDate" class="select-date" placeholder="Select Date" required>
+            <input type="date" name="editStartDate" class="select-date" placeholder="Select Date" required>
           </div>
           <div class="date">
             <p>Due Date </p>
-            <input type="date" name="dueDate" class="select-date" placeholder="Select Date" required>
+            <input type="date" name="editDueDate" class="select-date" placeholder="Select Date" required>
           </div>
         </div>
         <span class="wrong"></span>
@@ -137,7 +174,7 @@ if (isset($_POST['btnAddQuiz'])) {
     <input type="hidden" name="quizId">
     <div class="form-button">
       <div class="cancel">Cancel</div>
-      <button type="submit" class="submit" name="btnEditCourseName">Submit</button>
+      <button type="submit" class="submit" name="btnEditQuiz">Submit</button>
     </div>
   </form>
 </div>
@@ -147,7 +184,7 @@ if (isset($_POST['btnAddQuiz'])) {
     <p style="text-align: center">Do you want to delete this quiz ?</p>
     <div class="form-button">
       <div class="cancel">Cancel</div>
-      <button type="submit" class="submit" name="btnDeleteCourse">Submit</button>
+      <button type="submit" class="submit" name="btnDeleteQuiz">Submit</button>
       <input type="hidden" name="quizId">
     </div>
   </form>
@@ -156,7 +193,6 @@ if (isset($_POST['btnAddQuiz'])) {
 <h1><?php echo $title; ?></h1>
 
 <div class="content-container">
-  
   <?php
   // Get quiz collections
   $quizCollection = $mydb->quiz;

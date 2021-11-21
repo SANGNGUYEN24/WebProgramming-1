@@ -2,14 +2,17 @@
   session_start();
   if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
     //header('Location: ./login/index.php');
-} else {
+  } else {
     if (isset($_SESSION['isStudent']) && $_SESSION['isStudent'] == true){
         header('Location: ../student/');
     }
     if (isset($_SESSION['isTeacher']) && $_SESSION['isTeacher'] == true){
         header('Location: ../teacher/');
     }
-}
+  }
+
+  include 'loginProccessing.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +52,7 @@
               </div>
               <input name="type" value="1" class="Hide"/>
               <?php
-                include 'loginProccessing.php';
+                if ($_SESSION["loginFail"] == true && $_SESSION["loginTeacher"] == true) echo "<p class='wrong'>Invalid username or password</p>";
               ?>
               <button type="submit" class="TeacherButton" name="TeacherButton">Login</button>
               <a href="../register/" class="create-teacher">Create a teacher account</a>
@@ -69,6 +72,9 @@
                 <input name="password" placeholder="Password" type="password" class="input"/>
               </div>
               <input name="type" value="2" class="Hide"/>
+              <?php
+                if ($_SESSION["loginFail"] == true && $_SESSION["loginStudent"] == true) echo "<p class='wrong'>Invalid username or password</p>";
+              ?>
               <button type="submit" class="StudentButton" name="StudentButton">Login</button>
               <a href="../register/" class="create-student">Create a student account</a>
             </div>

@@ -45,7 +45,7 @@ function testCreateCourseData(){
 
 function testCreateQuizData(){
     $teacherId = "TC-3517806249";
-    $courseId = "C-8265734019";
+    $courseId = "Q-2037149586 ";
     createQuizData($teacherId, $courseId);
 }
 
@@ -82,17 +82,21 @@ function testCreateQuestionData(){
     "Q-8793164502","Q-0941862375","Q-3215940687");
     // 1 courseId
     $count = 0; // count for chosing quizId in quizIds
-    for($i = 0; $i < 20; $i++){
-        $courseId = $courseIds[$i];
+    // for($i = 0; $i < 20; $i++){
+    for($i = 0; $i < 1; $i++){
+        // $courseId = $courseIds[$i];
+        $courseId = "C-8346109258";
         // 4 quizIds means 4 turns
-        $turn = 1;
-        while ($turn <= 4){
-            $quizId = $quizIds[$count];
-            // 10 questions
-            createQuestionData($courseId, $quizId);
-            $turn+=1;
-            $count+=1;
-        }
+            $quizId ="Q-2037149586";
+        createQuestionData($courseId, $quizId);
+        // $turn = 1;
+        // while ($turn <= 4){
+        //     // $quizId = $quizIds[$count];
+        //     // 5 questions
+        //     createQuestionData($courseId, $quizId);
+        //     $turn+=1;
+        //     $count+=1;
+        // }
     }
 }
 

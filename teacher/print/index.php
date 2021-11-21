@@ -1,7 +1,6 @@
 <?php 
   session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +11,93 @@
   <title>Print PDF</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <script type="text/javascript">
+    function printPage() {
+        //Get the print button and put it into a variable
+        var printButton = document.getElementById("printPageButton");
+        //Set the print button display to 'none' 
+        printButton.style.display = 'none';
+        //Print the page content
+        window.print()
+        //Set the print button to 'block' again 
+        //[Delete this line if you want it to stay hidden after printing]
+        printButton.style.display = 'block';
+    }
+</script>
 </head>
 <body> 
-  <h1>Course: {Course name} - Quiz: {Quiz name}</h1>
-  <button onclick="window.print()">Download PDF</button>
+  <h1>Course: <?php echo $_SESSION["courseName"]; ?> - Quiz: <?php echo $_SESSION["quizName"]; ?></h1>
+  <button id="printPageButton" onclick="printPage()">Download PDF</button>
+  <div>
+    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
+    <p class="correct">A. ADWDOZXIC</p>
+    <p>B. OZIXCWQL</p>
+    <p>C. CZOXICQLWE</p>
+    <p>D. Nam Vo</p>
+  </div>
+  <div>
+    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
+    <p class="correct">A. ADWDOZXIC</p>
+    <p>B. OZIXCWQL</p>
+    <p>C. CZOXICQLWE</p>
+    <p>D. Nam Vo</p>
+  </div>
+  <div>
+    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
+    <p class="correct">A. ADWDOZXIC</p>
+    <p>B. OZIXCWQL</p>
+    <p>C. CZOXICQLWE</p>
+    <p>D. Nam Vo</p>
+  </div>
+  <div>
+    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
+    <p class="correct">A. ADWDOZXIC</p>
+    <p>B. OZIXCWQL</p>
+    <p>C. CZOXICQLWE</p>
+    <p>D. Nam Vo</p>
+  </div>
+  <div>
+    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
+    <p class="correct">A. ADWDOZXIC</p>
+    <p>B. OZIXCWQL</p>
+    <p>C. CZOXICQLWE</p>
+    <p>D. Nam Vo</p>
+  </div>
+  <div>
+    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
+    <p class="correct">A. ADWDOZXIC</p>
+    <p>B. OZIXCWQL</p>
+    <p>C. CZOXICQLWE</p>
+    <p>D. Nam Vo</p>
+  </div>
+  <div>
+    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
+    <p class="correct">A. ADWDOZXIC</p>
+    <p>B. OZIXCWQL</p>
+    <p>C. CZOXICQLWE</p>
+    <p>D. Nam Vo</p>
+  </div>
+  <div>
+    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
+    <p class="correct">A. ADWDOZXIC</p>
+    <p>B. OZIXCWQL</p>
+    <p>C. CZOXICQLWE</p>
+    <p>D. Nam Vo</p>
+  </div>
+  <div>
+    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
+    <p class="correct">A. ADWDOZXIC</p>
+    <p>B. OZIXCWQL</p>
+    <p>C. CZOXICQLWE</p>
+    <p>D. Nam Vo</p>
+  </div>
+  <div>
+    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
+    <p class="correct">A. ADWDOZXIC</p>
+    <p>B. OZIXCWQL</p>
+    <p>C. CZOXICQLWE</p>
+    <p>D. Nam Vo</p>
+  </div>
   <div>
     <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
     <p class="correct">A. ADWDOZXIC</p>
