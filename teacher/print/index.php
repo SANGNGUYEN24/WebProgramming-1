@@ -15,18 +15,18 @@
     function printPage() {
         //Get the print button and put it into a variable
         var printButton = document.getElementById("printPageButton");
-        //Set the print button visibility to 'hidden' 
-        printButton.style.visibility = 'hidden';
+        //Set the print button display to 'none' 
+        printButton.style.display = 'none';
         //Print the page content
         window.print()
-        //Set the print button to 'visible' again 
+        //Set the print button to 'block' again 
         //[Delete this line if you want it to stay hidden after printing]
-        printButton.style.visibility = 'visible';
+        printButton.style.display = 'block';
     }
 </script>
 </head>
 <body> 
-  <h1>Course: {Course name} - Quiz: {Quiz name}</h1>
+  <h1>Course: <?php echo $_SESSION["courseName"]; ?> - Quiz: <?php echo $_SESSION["quizName"]; ?></h1>
   <button id="printPageButton" onclick="printPage()">Download PDF</button>
   <div>
     <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>

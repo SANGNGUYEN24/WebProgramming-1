@@ -1,4 +1,0 @@
-const print = () => {
-
-  window.print();
-}
