@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$_SESSION['teacherId'] = "TC-4203517869";
+// $_SESSION['teacherId'] = "TC-4203517869";
 
 if (isset($_POST['btnCourseId'])) {
   $_SESSION['courseId'] = $_POST['courseId'];

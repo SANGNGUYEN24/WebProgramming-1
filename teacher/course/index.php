@@ -141,8 +141,10 @@ if (isset($_POST['btnDeleteCourse'])) {
 
   // Get courseIds created by teacher
   $teacher = $teacherCollection->findOne(['teacherId' => $_SESSION["teacherId"]]);
-  $courseIds = $teacher->courseIds;
+  // echo $_SESSION["teacherId"];
 
+  // if ($teacher->courseIds) {
+  $courseIds = $teacher->courseIds;
   // Loop to get courses created by teacher
   $teacherCourses = array();
   foreach ($courseIds as $courseId) {
@@ -174,6 +176,7 @@ if (isset($_POST['btnDeleteCourse'])) {
       </form> 
     ";
   }
+  // }
   ?>
 </div>
 <script src="./course/course.js"></script>

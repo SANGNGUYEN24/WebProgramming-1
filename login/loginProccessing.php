@@ -28,6 +28,7 @@
         if (!empty($res)){
             $_SESSION['username'] = $username;
             $_SESSION['isTeacher'] = true;
+            $_SESSION['teacherId'] = $res->teacherId;
             header('Location: ../teacher/');
         } 
         else {
