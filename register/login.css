@@ -222,18 +222,22 @@ button:hover {
 
 /* Register */
 .RegisterWrapper {
-  background-color: rgb(153, 27, 27);
+  background-color: white;
   position: absolute;
   top: 0;
   z-index: 10;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
   opacity: 1;
   margin-top: 0;
   transition: margin-top 0.3s, opacity 0.3s;
+  display: flex;
+  justify-content: center;
 }
 
 .icon-back {
+  color: black;
   font-size: 20px;
   z-index: 10;
   position: absolute;
@@ -248,12 +252,12 @@ button:hover {
   background-color: white;
   width: 100%;
   max-width: 550px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  top: 25%;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .big {
@@ -261,13 +265,13 @@ button:hover {
 }
 
 .small {
-  font-size: .7em;
+  font-size: 0.7em;
 }
 
 .square {
-  width: .7em;
-  height: .7em;
-  margin: .5em;
+  width: 0.7em;
+  height: 0.7em;
+  margin: 0.5em;
   display: inline-block;
 }
 
@@ -276,21 +280,23 @@ button:hover {
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  margin: 10px; /* demo only */
+  margin-top: 10px; /* demo only */
 }
 
 .custom-dropdown select {
   background-color: #1abc9c;
   color: #fff;
   font-size: inherit;
-  padding: .5em;
-  padding-right: 2.5em; 
+  padding: 0.5em;
+  padding-right: 2.5em;
   border: 0;
   margin: 0;
   border-radius: 3px;
   text-indent: 0.01px;
-  text-overflow: '';
-  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+  text-overflow: "";
+  /* hide default arrow in chrome OSX */
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .custom-dropdown::before,
@@ -300,17 +306,21 @@ button:hover {
   pointer-events: none;
 }
 
-.custom-dropdown::after { /*  Custom dropdown arrow */
+.custom-dropdown::after {
+  /*  Custom dropdown arrow */
+  z-index: 2;
   content: "\25BC";
   height: 1em;
-  font-size: .625em;
+  font-size: 0.625em;
   line-height: 1;
   right: 1.2em;
   top: 50%;
-  margin-top: -.5em;
+  margin-top: -0.5em;
 }
 
-.custom-dropdown::before { /*  Custom dropdown arrow cover */
+.custom-dropdown::before {
+  /*  Custom dropdown arrow cover */
+  z-index: 2;
   width: 2em;
   right: 0;
   top: 0;
@@ -319,19 +329,19 @@ button:hover {
 }
 
 .custom-dropdown select[disabled] {
-  color: rgba(0,0,0,.3);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .custom-dropdown select[disabled]::after {
-  color: rgba(0,0,0,.1);
+  color: rgba(0, 0, 0, 0.1);
 }
 
 .custom-dropdown::before {
-  background-color: rgba(0,0,0,.15);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .custom-dropdown::after {
-  color: rgba(0,0,0,.4);
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .register-logo {
@@ -345,7 +355,7 @@ button:hover {
 }
 
 .RegisterButton {
-  margin-top: 30px;
+  margin-top: 16px;
 }
 
 @media (min-width: 768px) {
@@ -439,7 +449,6 @@ button:hover {
   }
 
   .RegisterForm {
-    top: 20%;
     padding: 40px 20px;
     border: 2px solid #23d9a2;
     border-radius: 10px;

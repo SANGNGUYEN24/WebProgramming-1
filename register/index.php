@@ -120,7 +120,7 @@
                             ]);
                             echo "Register successfully";
                         } else {
-                            echo "Username already exists";
+                            echo "<p class='wrong'>Username already exists</p>";
                         }
                     }
                 }
@@ -129,7 +129,7 @@
             <button type="submit" id="mybtn" class="RegisterButton" disabled name="register">Register</button>
         </div>
     </form>
-    <!-- <script src="./login.js"></script> -->
+    <script src="./register.js"></script>
 </body>
 
 </html>
