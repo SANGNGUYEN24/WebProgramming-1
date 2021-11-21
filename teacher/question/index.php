@@ -1,4 +1,10 @@
 <?php
+
+// NOTE =====================================================================================
+// Note ===================================================================================
+
+// After edit question, delete all student related to that quiz. Same with delete question
+
 // Get question collections
 $questionCollection = $mydb->question;
 

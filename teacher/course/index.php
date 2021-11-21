@@ -1,4 +1,10 @@
 <?php
+
+// NOTE =====================================================================================
+// Note ===================================================================================
+
+// After edit course, delete all student related to that course. Same with delete course
+
 function random_course_id()
 {
   $chars = "C-";
@@ -91,6 +97,16 @@ if (isset($_POST['btnDeleteCourse'])) {
 
 <!-- Icon -->
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script>
+  window.onload = function() {
+    history.replaceState("", "", "./");
+    <?php
+    // if (isset($_POST['btnAddCourse']) || isset($_POST['btnEditCourseName']) || isset($_POST['btnDeleteCourse'])) {
+    //   echo "history.back();";
+    // }
+    ?>
+  }
+</script>
 
 <form class="form-course" method="POST">
   <div class="form-header">
@@ -180,8 +196,3 @@ if (isset($_POST['btnDeleteCourse'])) {
   ?>
 </div>
 <script src="./course/course.js"></script>
-<script>
-  window.onload = function() {
-    history.replaceState("", "", "./");
-  }
-</script>

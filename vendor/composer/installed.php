@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5592319fe23b8acb9e8fcfe5ef5ac93d0a0bd650',
+        'reference' => '87981514dbdbaa4f5f57e991c6445cf578bd69fe',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5592319fe23b8acb9e8fcfe5ef5ac93d0a0bd650',
+            'reference' => '87981514dbdbaa4f5f57e991c6445cf578bd69fe',
             'dev_requirement' => false,
         ),
         'jean85/pretty-package-versions' => array(
