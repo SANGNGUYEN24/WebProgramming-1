@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\Student\\StudentInfoTest::testGetStudentId":4,"Tests\\Student\\StudentInfoTest::test_GetStudentId":4},"times":{"Tests\\Student\\StudentInfoTest::testGetStudentId":0.01,"Tests\\Student\\StudentInfoTest::test_GetStudentId":0.003}}
