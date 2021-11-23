@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['courseId']))  $_SESSION['courseId'] = false;
+if (!isset($_SESSION['courseName']))  $_SESSION['courseName'] = false;
+if (!isset($_SESSION['quizId']))  $_SESSION['quizId'] = false;
+if (!isset($_SESSION['quizName']))  $_SESSION['quizName'] = false;
+
 if (isset($_POST['btnCourseId'])) {
   $_SESSION['courseId'] = $_POST['courseId'];
   if ($_GET['courseName']) $_SESSION['courseName'] = $_GET['courseName'];
@@ -17,17 +22,17 @@ if (isset($_GET["page"])) {
   $page = $_GET["page"];
 }
 
-# Update courseName/Id and quizName/Id
-if ($page == 'course') {
-  $_SESSION['courseId'] = false;
-  $_SESSION['courseName'] = false;
-  $_SESSION['quizId'] = false;
-  $_SESSION['quizName'] = false;
-}
-if ($page == 'quiz') {
-  $_SESSION['quizId'] = false;
-  $_SESSION['quizName'] = false;
-}
+// # Update courseName/Id and quizName/Id
+// if ($page == 'course') {
+//   $_SESSION['courseId'] = false;
+//   $_SESSION['courseName'] = false;
+//   $_SESSION['quizId'] = false;
+//   $_SESSION['quizName'] = false;
+// }
+// if ($page == 'quiz') {
+//   $_SESSION['quizId'] = false;
+//   $_SESSION['quizName'] = false;
+// }
 
 $button = "";
 $title = "";
