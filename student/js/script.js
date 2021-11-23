@@ -42,17 +42,14 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
 var hiddenInput = document.getElementById('resArray')
 const more_detail = result_box.querySelector(".buttons .more-detail");
 
-<<<<<<< HEAD:new-quiz-ui/js/script.js
 // if quitQuiz button clicked
 quit_quiz.onclick = ()=>{
     window.location.reload(); //reload the current window
 }
-=======
 more_detail.onclick = ()=>{
     hiddenInput.value = JSON.stringify(useranswers);
 }
 
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/js/script.js
 
 const next_btn = document.querySelector("footer .next_btn");
 const bottom_ques_counter = document.querySelector("footer .total_que");
@@ -107,7 +104,7 @@ function optionSelected(answer){
     const allOptions = option_list.children.length; //getting all option items
     
     if(userAns == correcAns){ //if user selected option is equal to array's correct answer
-<<<<<<< HEAD:new-quiz-ui/js/script.js
+// <<<<<<< HEAD:new-quiz-ui/js/script.js
         userScore += 1; //upgrading score value with 1
         answer.classList.add("correct"); //adding green color to correct selected option
         console.log("Correct Answer");
@@ -120,7 +117,7 @@ function optionSelected(answer){
             if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer 
                 option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
                 console.log("Auto selected correct answer.");
-=======
+// =======
         useranswers.push("true");
         //answer.classList.add("correct"); //adding green color to correct selected option
         //console.log("Correct Answer");
@@ -134,7 +131,10 @@ function optionSelected(answer){
                 //option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
                 //useranswers.push('false');
                 //console.log("Auto selected correct answer.");
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/js/script.js
+// <<<<<<< HEAD
+// >>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/js/script.js
+// =======
+// >>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
             }
         }
     }
@@ -167,12 +167,9 @@ function startTimer(time){
             //if (userAns == "") { useranswers.push("false");}
             for(i=0; i < allOptions; i++){
                 if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer
-<<<<<<< HEAD:new-quiz-ui/js/script.js
                     option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
-=======
                     //option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
                     useranswers.push("false");
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/js/script.js
                     console.log("Time Off: Auto selected correct answer.");
                 }
             }

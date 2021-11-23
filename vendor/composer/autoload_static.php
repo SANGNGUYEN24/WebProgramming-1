@@ -4,7 +4,11 @@
 
 namespace Composer\Autoload;
 
+<<<<<<< HEAD
 class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
+=======
+class ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -32,7 +36,10 @@ class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
         array (
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
+<<<<<<< HEAD
             'PackageVersions\\' => 16,
+=======
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
         ),
         'M' => 
         array (
@@ -47,10 +54,13 @@ class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
         ),
+<<<<<<< HEAD
         'A' => 
         array (
             'App\\' => 4,
         ),
+=======
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
     );
 
     public static $prefixDirsPsr4 = array (
@@ -80,10 +90,13 @@ class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+<<<<<<< HEAD
         'PackageVersions\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/package-versions-deprecated/src/PackageVersions',
         ),
+=======
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
         'MongoDB\\' => 
         array (
             0 => __DIR__ . '/..' . '/mongodb/mongodb/src',
@@ -100,15 +113,19 @@ class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+<<<<<<< HEAD
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+=======
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
     );
 
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+<<<<<<< HEAD
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
@@ -222,6 +239,8 @@ class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
         'MongoDB\\Operation\\Watch' => __DIR__ . '/..' . '/mongodb/mongodb/src/Operation/Watch.php',
         'MongoDB\\Operation\\WithTransaction' => __DIR__ . '/..' . '/mongodb/mongodb/src/Operation/WithTransaction.php',
         'MongoDB\\UpdateResult' => __DIR__ . '/..' . '/mongodb/mongodb/src/UpdateResult.php',
+=======
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\ActualValueIsNotAnObjectException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ActualValueIsNotAnObjectException.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
@@ -569,9 +588,12 @@ class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
         'PHPUnit\\Util\\Xml\\SuccessfulSchemaDetectionResult' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml/SuccessfulSchemaDetectionResult.php',
         'PHPUnit\\Util\\Xml\\ValidationResult' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml/ValidationResult.php',
         'PHPUnit\\Util\\Xml\\Validator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml/Validator.php',
+<<<<<<< HEAD
         'PackageVersions\\FallbackVersions' => __DIR__ . '/..' . '/composer/package-versions-deprecated/src/PackageVersions/FallbackVersions.php',
         'PackageVersions\\Installer' => __DIR__ . '/..' . '/composer/package-versions-deprecated/src/PackageVersions/Installer.php',
         'PackageVersions\\Versions' => __DIR__ . '/..' . '/composer/package-versions-deprecated/src/PackageVersions/Versions.php',
+=======
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
         'PharIo\\Manifest\\Application' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Application.php',
         'PharIo\\Manifest\\ApplicationName' => __DIR__ . '/..' . '/phar-io/manifest/src/values/ApplicationName.php',
         'PharIo\\Manifest\\Author' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Author.php',
@@ -641,6 +663,7 @@ class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
         'PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
+<<<<<<< HEAD
         'PhpParser\\Builder' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Builder.php',
         'PhpParser\\BuilderFactory' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/BuilderFactory.php',
         'PhpParser\\BuilderHelpers' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/BuilderHelpers.php',
@@ -982,6 +1005,8 @@ class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
         'Prophecy\\Prophet' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Prophet.php',
         'Prophecy\\Util\\ExportUtil' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Util/ExportUtil.php',
         'Prophecy\\Util\\StringUtil' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Util/StringUtil.php',
+=======
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',
         'SebastianBergmann\\CliParser\\OptionDoesNotAllowArgumentException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/OptionDoesNotAllowArgumentException.php',
@@ -1184,8 +1209,11 @@ class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+<<<<<<< HEAD
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
+=======
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
         'TheSeer\\Tokenizer\\NamespaceUriException' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUriException.php',
@@ -1296,9 +1324,15 @@ class ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit2ec3315abc21d9b3050c6eec5c9672d0::$classMap;
+=======
+            $loader->prefixLengthsPsr4 = ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e::$classMap;
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
 
         }, null, ClassLoader::class);
     }

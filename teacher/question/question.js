@@ -85,17 +85,12 @@ for (let i = 0; i < editBtn.length; i++) {
     // pass fourthchoice
     textarea[4].value = hiddenInput[4].value;
 
-    //Reset option
-    option[0].selected = false;
-    option[1].selected = false;
-    option[2].selected = false;
     // Pass the level
     if (hiddenInput[5].value == "1") {
       option[0].selected = true;
     } else if (hiddenInput[5].value == "2") {
       option[1].selected = true;
     } else option[2].selected = true;
-    console.log(formEdit.querySelector("select").value);
 
     // Pass questionID
     input[0].value = hiddenInput[6].value;

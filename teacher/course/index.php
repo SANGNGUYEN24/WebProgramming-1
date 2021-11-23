@@ -1,6 +1,25 @@
 <?php
+<<<<<<< HEAD
 // Create new teacher object:
 $teacher = new Teacher($_SESSION["teacherId"]);
+=======
+
+// NOTE =====================================================================================
+// Note ===================================================================================
+
+// After edit course, delete all student related to that course. Same with delete course
+
+function random_course_id()
+{
+  $chars = "C-";
+  $numbers = "0123456789";
+  $courseId =  $chars . substr(str_shuffle($numbers), 0, 10);
+  return $courseId;
+}
+
+// Get course collection:
+$courseCollection = $mydb->course;
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
 
 // Handle submit add course:
 if (isset($_POST['btnAddCourse'])) {
@@ -20,6 +39,16 @@ if (isset($_POST['btnDeleteCourse'])) {
 
 <!-- Icon -->
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script>
+  window.onload = function() {
+    history.replaceState("", "", "./");
+    <?php
+    // if (isset($_POST['btnAddCourse']) || isset($_POST['btnEditCourseName']) || isset($_POST['btnDeleteCourse'])) {
+    //   echo "history.back();";
+    // }
+    ?>
+  }
+</script>
 
 <form class="form-course" method="POST">
   <div class="form-header">
@@ -64,11 +93,30 @@ if (isset($_POST['btnDeleteCourse'])) {
 
 <div class="content-container">
   <?php
+<<<<<<< HEAD
   // Create new teacher object:
   $teacher = new Teacher($_SESSION["teacherId"]);
 
   // Get teacher courses:
   $teacherCourses = $teacher->getAllCoursesBelongsTo();
+=======
+  // Get teacher and course collections
+  $teacherCollection = $mydb->teacher;
+  $courseCollection = $mydb->course;
+
+  // Get courseIds created by teacher
+  $teacher = $teacherCollection->findOne(['teacherId' => $_SESSION["teacherId"]]);
+  // echo $_SESSION["teacherId"];
+
+  // if ($teacher->courseIds) {
+  $courseIds = $teacher->courseIds;
+  // Loop to get courses created by teacher
+  $teacherCourses = array();
+  foreach ($courseIds as $courseId) {
+    $course = $courseCollection->findOne(['courseId' => $courseId]);
+    array_push($teacherCourses, $course);
+  }
+>>>>>>> a462195eeae472ad0ced5a3619630fbafbf2724d
 
   // Render courses to card
   foreach ($teacherCourses as $teacherCourse) {
@@ -98,8 +146,3 @@ if (isset($_POST['btnDeleteCourse'])) {
   ?>
 </div>
 <script src="./course/course.js"></script>
-<script>
-  window.onload = function() {
-    history.replaceState("", "", "./");
-  }
-</script>
