@@ -33,7 +33,7 @@
 </script>
 </head>
 <body> 
-  <h1>Course: <?php echo $_SESSION["courseName"]; ?> - Quiz: <?php echo $_SESSION["quizName"]; ?></h1>
+  <h1> <?php echo $_SESSION["courseName"]; ?> <br/> <?php echo $_SESSION["quizName"]; ?></h1>
 
 <?php
 $idx = 1;
@@ -48,6 +48,15 @@ echo "<button id=\"printPageButton\" onclick=\"printPage()\">Download PDF</butto
     <p id = \"last-option\">D. ".$question->option4."</p>
   </div>";
   
+  echo "
+    <div>
+    <p><span>Question $idx:</span> ".$question->description."?</p>
+    <p class=\"correct\">A. ".$question->option1."</p>
+    <p>B. ".$question->option2."</p>
+    <p>C. ".$question->option3."</p>
+    <p \"last-option\">D. ".$question->option4."</p>
+  </div>";
+
   echo "
     <div>
     <p><span>Question $idx:</span> ".$question->description."?</p>
