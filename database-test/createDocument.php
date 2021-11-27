@@ -74,7 +74,7 @@ function createStudentData(){
 }
 
 // Create 20 courses
-function createCourseData(){
+function createCourseData($teacherId){
     global $courseCollection;
     $numbers = "0123456789";
     $years = array("2019","2020", "2021");
@@ -86,7 +86,8 @@ function createCourseData(){
 
         $courseCollection->insertOne([
             "courseId" => $courseId,
-            "name" => "Course " . $cIdx,
+            "teacherId" => $teacherId,
+            "name" => "",
             "year" => $year,
         ]);
     }
