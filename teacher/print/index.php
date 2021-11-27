@@ -4,9 +4,10 @@
   $course = $courseCollection->findOne(['courseId' => $_SESSION["courseId"]]);
   $quiz = $quizCollection->findOne(['quizId' => $_SESSION["quizId"]]);
   $questions = $questionCollection->find(['quizId'=> $_SESSION["quizId"]]);
+  print_r($_SESSION["courseId"]);
+  print_r($course);
   $courseName = $course->name;
   $quizName = $quiz->name;
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

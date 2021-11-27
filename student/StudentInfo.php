@@ -1,11 +1,10 @@
 <?php declare(strict_types=1);
 
 namespace App;
-use App\Exceptions\InfoNotFoundException;
 
 class StudentInfo{
-    public function getStudent($username){
-        include '../connect.php';
+    public function getStudentId($username){
+        include './connect_new.php';
 
         $post = $db->student;
 
@@ -14,34 +13,33 @@ class StudentInfo{
         return $result->studentId;
     }
 
-    public function getTeacher($teacherID){
-        include '../connect.php';
-
+    public function getTeacherUsername($teacherID){
+        include './connect_new.php';
         $post = $db->teacher;
 
         $result = $post->findOne(['teacherId'=>$teacherID]);
 
-        return $result;
+        return $result->username;
     }
 
-    public function getCourse($courseID){
-        include '../connect.php';
+    public function getCourseName($courseID){
+         include './connect_new.php';
 
         $post = $db->course;
 
         $result = $post->findOne(['courseId'=>$courseID]);
 
-        return $result;
+        return $result->name;
     }
 
-    public function getQuiz($quizID){
-        include '../connect.php';
+    public function getQuizDueDate($quizID){
+        include './connect_new.php';
 
         $post = $db->quiz;
 
         $result = $post->findOne(['quizId'=>$quizID]);
 
-        return $result;
+        return $result->dueDate;
     }
 }
 
