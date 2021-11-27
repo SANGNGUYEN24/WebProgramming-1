@@ -156,11 +156,11 @@ if (isset($_POST['btnDeleteQuiz'])) {
   $quizzes = $course->getAllQuizzesBelongsTo();
 
   foreach ($quizzes as $quiz) {
-    echo '<form class="card" action="./?page=question&quizName=' . $quiz->name . '" method="POST">
+    echo '<div class="card">
             <div class="card-top">
                 <p class="quiz-name">' . $quiz->name . '</p>
                 <div style="display: flex; column-gap: 5px;">
-                  <button type="submit" name="btnQuizId" id="btn-test">VIEW</button>
+                  <a href="./?page=question&quizId=' . $quiz->quizId . '&quizName=' . $quiz->name . '"><button>VIEW</button></a>
                   <div class="drop-down">
                     <i class="fas fa-ellipsis-v"></i>
                     <div class="drop-down-list">
@@ -176,7 +176,7 @@ if (isset($_POST['btnDeleteQuiz'])) {
               <p class="date">' . $quiz->dueDate . '</p>
             </div>
             <input type="hidden" name="quizId" value="' . $quiz->quizId . '"></input>
-          </form>';
+          </div>';
   }
   ?>
 </div>

@@ -83,14 +83,14 @@ if (isset($_POST['btnDeleteCourse'])) {
   // Render courses to card
   foreach ($teacherCourses as $teacherCourse) {
     echo "
-      <form class='card' method='POST' action='./?page=quiz&courseName=" . $teacherCourse->name . "'>
+      <div class='card'>
         <div class='card-image'>
           <img src='../assets/course.png' alt=''>
         </div>
         <div class='card-content'>
           <p class='course-name'>" . $teacherCourse->name . "</p>
           <div class='content-bottom'>
-            <button type='submit' name='btnCourseId'>View</button>
+            <a href='./?page=quiz&courseId=" . $teacherCourse->courseId . "&courseName=" . $teacherCourse->name . "'><button>View</button></a>
             <div class='drop-down'>
               <i class='fas fa-ellipsis-v'></i>
               <div class='drop-down-list'>
@@ -101,7 +101,7 @@ if (isset($_POST['btnDeleteCourse'])) {
             </div>
           </div>
         </div>
-      </form> 
+      </div> 
     ";
   }
   // }

@@ -54,3 +54,8 @@
     });
   });
 </script>
+<script>
+  window.onload = function() {
+    history.replaceState("", "", "./?page=result");
+  }
+</script>
