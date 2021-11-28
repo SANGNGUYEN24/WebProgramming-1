@@ -76,7 +76,7 @@
                   </div>
                 </div>
                 <div class="body">
-                  <h5 class="post-title">'.getQuiz($row->quizId)->name.'</h5>
+                  <h5 class="post-title">'.$getQuizInfo->name.'</h5>
                   <p class="post-date">Course: <a href="search_processing.php?item='.getCourse($getQuizInfo->courseId)->name.'">'.getCourse($getQuizInfo->courseId)->name.'</a> ('.$getQuizInfo->courseId.')</p>
                   <p class="post-date">Created by: <a href="search_processing.php?item='.getTeacher($getQuizInfo->teacherId)->name.'">'.getTeacher($getQuizInfo->teacherId)->name.'</a></p>
                   <p class="post-date" style="color:green">Score: '.$row->score.'</p>

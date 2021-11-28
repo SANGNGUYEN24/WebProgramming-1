@@ -192,12 +192,6 @@ a{
     pointer-events: none;
     transition: all 0.3s ease;
 }
-<<<<<<< HEAD:new-quiz-ui/css/style.css
-.quiz_box header{
-    position: relative;
-    z-index: 2;
-    height: 70px;
-=======
 
 .quiz_box::-webkit-scrollbar {
     display: none;
@@ -211,7 +205,6 @@ a{
     z-index: 1080;
     transform: translate(60%, 50%);
     height: 50px;
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/css/style.css
     padding: 0 30px;
     margin: 0 auto;
     margin-bottom: 30px;
@@ -225,15 +218,6 @@ a{
     justify-content: space-between;
     box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.1);
 }
-<<<<<<< HEAD:new-quiz-ui/css/style.css
-.quiz_box header .title{
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--green);
-}
-.quiz_box header .timer{
-    color: #004085;
-=======
 .head .title{
     font-size: 28px;
     font-weight: 600;
@@ -241,7 +225,6 @@ a{
 }
 .head .timer{
     color: #C850C0;
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/css/style.css
     background: #cce5ff;
     border: 1px solid #b8daff;
     height: 45px;
@@ -252,20 +235,12 @@ a{
     justify-content: space-between;
     width: 150px;
 }
-<<<<<<< HEAD:new-quiz-ui/css/style.css
-.quiz_box header .timer .time_left_txt{
-=======
 .head .timer .time_left_txt{
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/css/style.css
     font-weight: 400;
     font-size: 17px;
     user-select: none;
 }
-<<<<<<< HEAD:new-quiz-ui/css/style.css
-.quiz_box header .timer .timer_sec{
-=======
 .head .timer .timer_sec{
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/css/style.css
     font-size: 18px;
     font-weight: 500;
     height: 30px;
@@ -278,11 +253,7 @@ a{
     border: 1px solid #343a40;
     user-select: none;
 }
-<<<<<<< HEAD:new-quiz-ui/css/style.css
-.quiz_box header .time_line{
-=======
 .head .time_line{
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/css/style.css
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -451,24 +422,13 @@ footer button.show{
     border: 1px solid #007bff;
     transition: all 0.3s ease;
 }
-<<<<<<< HEAD:new-quiz-ui/css/style.css
-.buttons button.restart{
-=======
 
 .buttons button.restart,
 .buttons button.more-detail{
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/css/style.css
     color: #fff;
     background: var(--blue);
 }
 
-<<<<<<< HEAD:new-quiz-ui/css/style.css
-.buttons button.restart a{
-    color: #fff;
-}
-
-.buttons button.restart:hover{
-=======
 .buttons button.restart a,
 .buttons button.more-detail a{
     color: #fff;
@@ -476,7 +436,6 @@ footer button.show{
 
 .buttons button.restart:hover,
 .buttons button.more-detail:hover{
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/css/style.css
     background: var(--green);
 }
 .buttons button.quit{
@@ -486,8 +445,4 @@ footer button.show{
 .buttons button.quit:hover{
     color: #fff;
     background: var(--green);
-<<<<<<< HEAD:new-quiz-ui/css/style.css
 }
-=======
-}
->>>>>>> 71e8163e0f32c07245404b72476e919f644ae7d3:student/css/style.css

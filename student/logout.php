@@ -6,6 +6,8 @@
     }
 
     unset($_SESSION['username']);
-    unset($_SESSION['student']);
+    unset($_SESSION['isTeacher']);
+    unset($_SESSION['isStudent']);
+    session_unset();
     header('Location: ../login/');
 ?>
