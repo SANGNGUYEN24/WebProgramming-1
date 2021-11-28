@@ -15,11 +15,12 @@ if (window.innerWidth < 768) {
   height = 580;
 }
 
-if (window.innerWidth < 663) {
-  height += 130;
-}
-
 if (window.innerWidth < 417) {
+  height += 60;
+} else if (window.innerWidth < 672) {
+  height += 110;
+} else if (window.innerWidth < 768) {
+} else if (window.innerWidth < 780) {
   height += 60;
 }
 
@@ -41,11 +42,12 @@ window.addEventListener("resize", () => {
     height = 580 + wrapperHeight * (count - 1);
   }
 
-  if (window.innerWidth < 663) {
-    height += 130;
-  }
-
   if (window.innerWidth < 417) {
+    height += 60;
+  } else if (window.innerWidth < 672) {
+    height += 110;
+  } else if (window.innerWidth < 768) {
+  } else if (window.innerWidth < 780) {
     height += 60;
   }
 });
