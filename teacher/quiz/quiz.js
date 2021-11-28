@@ -15,11 +15,12 @@ if (window.innerWidth < 768) {
   height = 580;
 }
 
-if (window.innerWidth < 663) {
-  height += 130;
-}
-
 if (window.innerWidth < 417) {
+  height += 60;
+} else if (window.innerWidth < 672) {
+  height += 110;
+} else if (window.innerWidth < 768) {
+} else if (window.innerWidth < 780) {
   height += 60;
 }
 
@@ -41,11 +42,12 @@ window.addEventListener("resize", () => {
     height = 580 + wrapperHeight * (count - 1);
   }
 
-  if (window.innerWidth < 663) {
-    height += 130;
-  }
-
   if (window.innerWidth < 417) {
+    height += 60;
+  } else if (window.innerWidth < 672) {
+    height += 110;
+  } else if (window.innerWidth < 768) {
+  } else if (window.innerWidth < 780) {
     height += 60;
   }
 });
@@ -86,7 +88,7 @@ addBtn.addEventListener("click", () => {
     <div class='line'></div>
     <div class="form-header">
       <div class="form-title">
-        <p class="title">Question ${count}<span class="wrong"></span></p>
+        <p class="title">Question <span class="count">${count}</span><span class="wrong"></span></p>
         <i class="fa fa-minus-circle"></i>
       </div>
       <div class="form-input">
@@ -237,10 +239,13 @@ formWrapper[1].querySelector(".cancel").addEventListener("click", () => {
 
 // Check if input is empty for form-edit
 formWrapper[0].addEventListener("submit", (e) => {
-  let input = formWrapper[0].querySelector(".input");
-  if (input.value == "") {
-    e.preventDefault();
+  let selected = formWrapper[0].getElementsByClassName("select-date");
+  if (
+    new Date(selected[0].value).getTime() >
+    new Date(selected[1].value).getTime()
+  ) {
     formWrapper[0].querySelector(".wrong").innerText =
-      "Course name cannot be empty";
+      "Start date cannot be less than due date";
+    e.preventDefault();
   }
 });
