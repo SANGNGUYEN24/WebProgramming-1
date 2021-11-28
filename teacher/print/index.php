@@ -4,8 +4,6 @@
   $course = $courseCollection->findOne(['courseId' => $_SESSION["courseId"]]);
   $quiz = $quizCollection->findOne(['quizId' => $_SESSION["quizId"]]);
   $questions = $questionCollection->find(['quizId'=> $_SESSION["quizId"]]);
-  print_r($_SESSION["courseId"]);
-  print_r($course);
   $courseName = $course->name;
   $quizName = $quiz->name;
 ?>
@@ -42,7 +40,7 @@ echo "<button id=\"printPageButton\" onclick=\"printPage()\">Download PDF</butto
   foreach($questions as $question){
     echo "
     <div >
-    <p><span>Question $idx:</span> ".$question->description."?</p>
+    <p><span>Question $idx:</span> ".$question->description."</p>
     <p class=\"correct\">A. ".$question->option1."</p>
     <p>B. ".$question->option2."</p>
     <p>C. ".$question->option3."</p>
