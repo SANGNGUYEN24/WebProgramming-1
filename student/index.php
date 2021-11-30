@@ -17,7 +17,14 @@
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Student Homepage</title>
+  <title>QUIZ - Multiple-choice Quizzes for Education </title>
+
+  <meta name="description" content="The effective online-quiz system for schools to create, 
+                                    manage and take online quizzes·
+                                    Suitable for any devices · Sign up for free!">
+              
+  <meta name="keywords" content="quiz, quizz, quizzes, quiz.com, www.quiz.com, quiz.com website, online quiz, join quiz, do quiz
+                                 quiz login, quiz student, quiz student login">
 
   <link rel="stylesheet" href="css/maicons.css">
 
@@ -46,7 +53,7 @@
           </div>
           <div class="col-md-6 py-5 wow zoomIn">
             <div class="img-fluid text-center">
-              <img src="images/Digital-Quiz-Slider.png" alt="">
+              <img src="images/Digital-Quiz-Slider.png" alt="QUIZ carousel">
             </div>
           </div>
         </div>
