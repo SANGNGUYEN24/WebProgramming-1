@@ -16,7 +16,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Time</title>
+    <title>QUIZ Time - Enter ID Here</title>
+    <meta name="description" content="Join a quiz of QUIZ ·
+                                    Take any quiz with its ID · Sign up to take the quiz!">
+              
+    <meta name="keywords" content="quiz, quizz, quizzes, quiz.com, www.quiz.com, quiz.com website, online quiz, join quiz, do quiz
+                                 quiz ID , quiz student, quiz ID student, play quiz, take quiz, enter quiz, enter quiz ID, quiz time, quiz quiz time ">
+
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
