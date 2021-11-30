@@ -4,12 +4,9 @@
   $course = $courseCollection->findOne(['courseId' => $_SESSION["courseId"]]);
   $quiz = $quizCollection->findOne(['quizId' => $_SESSION["quizId"]]);
   $questions = $questionCollection->find(['quizId'=> $_SESSION["quizId"]]);
-  print_r($_SESSION["courseId"]);
-  print_r($course);
   $courseName = $course->name;
   $quizName = $quiz->name;
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,39 +21,32 @@
     function printPage() {
         //Get the print button and put it into a variable
         var printButton = document.getElementById("printPageButton");
-        //Set the print button visibility to 'hidden' 
-        printButton.style.visibility = 'hidden';
+        //Set the print button display to 'none' 
+        printButton.style.display = 'none';
         //Print the page content
         window.print()
-        //Set the print button to 'visible' again 
+        //Set the print button to 'block' again 
         //[Delete this line if you want it to stay hidden after printing]
-        printButton.style.visibility = 'visible';
+        printButton.style.display = 'block';
     }
 </script>
 </head>
+<body> 
+  <h1> <?php echo $_SESSION["courseName"]; ?> <br/> <?php echo $_SESSION["quizName"]; ?></h1>
 
 <?php
 $idx = 1;
-echo "<h1>$courseName <br> $quizName </h1>";
 echo "<button id=\"printPageButton\" onclick=\"printPage()\">Download PDF</button>";
   foreach($questions as $question){
     echo "
     <div >
-    <p><span>Question $idx:</span> ".$question->description."?</p>
+    <p><span>Question $idx:</span> ".$question->description."</p>
     <p class=\"correct\">A. ".$question->option1."</p>
     <p>B. ".$question->option2."</p>
     <p>C. ".$question->option3."</p>
     <p id = \"last-option\">D. ".$question->option4."</p>
   </div>";
   
-  echo "
-    <div>
-    <p><span>Question $idx:</span> ".$question->description."?</p>
-    <p class=\"correct\">A. ".$question->option1."</p>
-    <p>B. ".$question->option2."</p>
-    <p>C. ".$question->option3."</p>
-    <p \"last-option\">D. ".$question->option4."</p>
-  </div>";
   $idx++;
   }
 // Test fetching
@@ -67,45 +57,8 @@ echo "<button id=\"printPageButton\" onclick=\"printPage()\">Download PDF</butto
 // Test fetching
   
 ?>
-<!-- <body> 
-  <h1>Course: {Course name} - Quiz: {Quiz name}</h1>
-  <button id="printPageButton" onclick="printPage()">Download PDF</button>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
+  
 </body>
-</html> -->
+</html>
 
 

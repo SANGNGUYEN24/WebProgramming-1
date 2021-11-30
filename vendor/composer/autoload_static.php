@@ -4,13 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e
+class ComposerStaticInitcbc1fc8ba220ba4a6821b07ddb81bafb
 {
     public static $files = array (
-        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '3a37ebac017bc098e9a86b35401e7a68' => __DIR__ . '/..' . '/mongodb/mongodb/src/functions.php',
     );
 
@@ -46,14 +46,18 @@ class ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -90,6 +94,10 @@ class ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
         ),
     );
 
@@ -729,9 +737,9 @@ class ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit19fc08cc395dbd06f034e8e894006d1e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcbc1fc8ba220ba4a6821b07ddb81bafb::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcbc1fc8ba220ba4a6821b07ddb81bafb::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitcbc1fc8ba220ba4a6821b07ddb81bafb::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,56 +1,55 @@
 <?php
 session_start();
 
-// $_SESSION['teacherId'] = "TC-4203517869";
-
-if (isset($_POST['btnCourseId'])) {
-  $_SESSION['courseId'] = $_POST['courseId'];
-  if ($_GET['courseName']) $_SESSION['courseName'] = $_GET['courseName'];
-}
-
-if (isset($_POST['btnQuizId'])) {
-  $_SESSION['quizId'] = $_POST['quizId'];
-  if ($_GET['quizName']) $_SESSION['quizName'] = $_GET['quizName'];
-}
+if (!isset($_SESSION['courseId']))  $_SESSION['courseId'] = false;
+if (!isset($_SESSION['courseName']))  $_SESSION['courseName'] = false;
+if (!isset($_SESSION['quizId']))  $_SESSION['quizId'] = false;
+if (!isset($_SESSION['quizName']))  $_SESSION['quizName'] = false;
 
 # Update page:
 $page = "course";
 if (isset($_GET["page"])) {
   $page = $_GET["page"];
-}
-
-# Update courseName/Id and quizName/Id
-if ($page == 'course') {
-  $_SESSION['courseId'] = false;
-  $_SESSION['courseName'] = false;
-  $_SESSION['quizId'] = false;
-  $_SESSION['quizName'] = false;
-}
-if ($page == 'quiz') {
-  $_SESSION['quizId'] = false;
-  $_SESSION['quizName'] = false;
+  if (isset($_GET['courseId'])) $_SESSION['courseId'] = $_GET['courseId'];
+  if (isset($_GET['quizId'])) $_SESSION['quizId'] = $_GET['quizId'];
+  if (isset($_GET['courseName']))  $_SESSION['courseName'] = $_GET['courseName'];
+  if (isset($_GET['quizName'])) $_SESSION['quizName'] = $_GET['quizName'];
 }
 
 $button = "";
 $title = "";
+
 if ($page == "course") {
   $button = "Create a course";
   $title = "All courses";
 } else if ($page == "quiz") {
+  if (!$_SESSION['courseId']) {
+    header('Location: ./?page=course');
+  }
   $button = "Add a quiz";
   $title = "All quizzes";
 } else if ($page == "question") {
+  if (!$_SESSION['quizId'] || !$_SESSION['courseId']) {
+    header('Location: ./?page=course');
+  }
   $button = "Add a question";
+} else if ($page == "result") {
+  if (!$_SESSION['quizId'] || !$_SESSION['courseId']) {
+    header('Location: ./?page=course');
+  }
+} else {
+  header('Location: ./');
 }
+
 ?>
 
 <?php
 if (!isset($_SESSION['username']) && $_SESSION['username'] == NULL) {
-    header('Location: ../login/');
+  header('Location: ../login/');
 } else {
-    if (isset($_SESSION['isStudent']) && $_SESSION['isStudent'] == true){
-        header('Location: ../student/');
-    }
+  if (isset($_SESSION['isStudent']) && $_SESSION['isStudent'] == true) {
+    header('Location: ../student/');
+  }
 }
 ?>
 
@@ -82,7 +81,7 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == NULL) {
       <header>
         <div class="container">
           <p class="name-page">ADMIN PAGE</p>
-          <button class="sign-out"><a href="../index.php" id="sign-out-text">Sign out</a></button>
+          <button class="sign-out"><a href="logout.php" id="sign-out-text">Sign out</a></button>
         </div>
       </header>
 
@@ -98,13 +97,12 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == NULL) {
             <!-- Path -->
             <p>Your courses
               <?php
-              if ($_SESSION['courseId']) {
+              if ($page != 'course')
                 echo ' > ' . $_SESSION['courseName'];
-              }
-              if ($_SESSION['quizId']) {
+              if ($page == 'question' || $page == 'result')
                 echo ' > ' . $_SESSION['quizName'];
-              }
-              if ($page == "result") echo " > View result";
+              if ($page == 'result')
+                echo ' > View result';
               ?>
             </p>
           </div>
@@ -124,8 +122,9 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == NULL) {
       </nav>
       <div class="content-wrapper">
         <?php
-        require "../database/connectDatabase.php";
-        $mydb = $client->data;
+        require "../app/Models/Teacher.php";
+        require "../app/Models/Course.php";
+        require "../app/Models/Quiz.php";
         include "./$page/index.php";
         ?>
       </div>

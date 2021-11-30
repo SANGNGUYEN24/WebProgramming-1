@@ -115,7 +115,6 @@ function createQuizData($teacherId, $courseId){
             "courseId" => $courseId,
         ]);
     }
-
     echo "<br>Created 4 quiz for the courseId: " . $courseId . " teacherId: " . $teacherId;
 }
 

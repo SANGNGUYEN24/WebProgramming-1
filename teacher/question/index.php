@@ -1,50 +1,31 @@
 <?php
-
-// NOTE =====================================================================================
-// Note ===================================================================================
-
-// After edit question, delete all student related to that quiz. Same with delete question
-
-// Get question collections
-$questionCollection = $mydb->question;
+// Create new quiz object:
+$quiz = new Quiz($_SESSION['courseId'], $_SESSION['quizId']);
 
 if (isset($_POST['btnAddQuestion'])) {
-  $insertQuestion = $questionCollection->insertOne([
-    'questionNumber' => '1',  // CLONE
-    'quizId' => $_SESSION['quizId'],
-    'courseId' => $_SESSION['courseId'],
-    'description' => htmlspecialchars($_POST['add-description']),
-    'option1' => htmlspecialchars($_POST['add-option1']),
-    'option2' => htmlspecialchars($_POST['add-option2']),
-    'option3' => htmlspecialchars($_POST['add-option3']),
-    'option4' => htmlspecialchars($_POST['add-option4']),
-    'level' => $_POST['add-lvlOption'],
-    'unitScore' => (int) $_POST['add-lvlOption'] * 10
-  ]);
+  $quiz->addQuestion(
+    htmlspecialchars($_POST['add-description']),
+    htmlspecialchars($_POST['add-option1']),
+    htmlspecialchars($_POST['add-option2']),
+    htmlspecialchars($_POST['add-option3']),
+    htmlspecialchars($_POST['add-option4']),
+    $_POST['add-lvlOption']
+  );
 }
 
 if (isset($_POST['BtnDeleteQuestion'])) {
-  $deleteQuestion = $questionCollection->deleteOne([
-    '_id' => new MongoDB\BSON\ObjectId($_POST['questionId'])
-  ]);
+  $quiz->deleteQuestion($_POST['questionId']);
 }
 
 if (isset($_POST['BtnEditQuestion'])) {
-  $updateQuestion = $questionCollection->updateOne(
-    [
-      '_id' => new MongoDB\BSON\ObjectId($_POST['questionId'])
-    ],
-    [
-      '$set' => [
-        'description' => htmlspecialchars($_POST['edit-description']),
-        'option1' => htmlspecialchars($_POST['edit-option1']),
-        'option2' => htmlspecialchars($_POST['edit-option2']),
-        'option3' => htmlspecialchars($_POST['edit-option3']),
-        'option4' => htmlspecialchars($_POST['edit-option4']),
-        'level' => $_POST['edit-lvlOption'],
-        'unitScore' => (int) $_POST['edit-lvlOption'] * 10,
-      ]
-    ]
+  $quiz->editQuestion(
+    $_POST['questionId'],
+    htmlspecialchars($_POST['edit-description']),
+    htmlspecialchars($_POST['edit-option1']),
+    htmlspecialchars($_POST['edit-option2']),
+    htmlspecialchars($_POST['edit-option3']),
+    htmlspecialchars($_POST['edit-option4']),
+    $_POST['edit-lvlOption']
   );
 }
 ?>
@@ -146,11 +127,11 @@ if (isset($_POST['BtnEditQuestion'])) {
 </div>
 
 <?php
-// Get question collections
-$questionCollection = $mydb->question;
+// Create new quiz object:
+$quiz = new Quiz($_SESSION["courseId"], $_SESSION["quizId"]);
 
-// Get question based on quizID and courseID
-$questions = $questionCollection->find(['quizId' => $_SESSION["quizId"], 'courseId' => $_SESSION["courseId"]]);
+// Get all questions belongs to quiz:
+$questions = $quiz->getAllQuestionsBelongsTo();
 
 $numberOfQuestion = 0;
 foreach ($questions as $question) {
@@ -165,7 +146,7 @@ foreach ($questions as $question) {
             <input type="hidden" value="' . $question->option3 . '">
             <input type="hidden" value="' . $question->option4 . '">
             <!-- This is the level -->
-            <input type="hidden" value="2" >
+            <input type="hidden" value="' . $question->level . '" >
             
             <!-- This is the QuestionId -->
             <input type="hidden" name="questionId" value="' . $question->_id . '"> 
