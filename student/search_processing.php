@@ -16,6 +16,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUIZ - Search Result Here</title>
+
+  <meta name="description" content="Find More Quizzes Here · Get Quizzes From Your Teacher ·
+                                  Sign up for more information!">
+            
+  <meta name="keywords" content="quiz, quizz, quizzes, quiz.com, www.quiz.com, quiz.com website, online quiz, find quiz, quiz from, quizzes from,
+                               quiz of, quizzes of, quiz search, quizzes search, quiz find, quizzes find, search quiz, search quizzes">
 
   <link rel="stylesheet" href="css/maicons.css">
 
