@@ -20,7 +20,13 @@
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>View Score</title>
+  <title>QUIZ - View All Of Your Scores</title>
+
+  <meta name="description" content="Try Your Best and Do Better · Full View Of Your Progress · Sign up to test yourself!">
+              
+    <meta name="keywords" content="quiz, quizz, quizzes, quiz.com, quiz.com score, www.quiz.com, www.quiz.com score, quiz.com website, quiz scores, quiz score, quiz results, 
+                                 result student, result quiz student, result quizzes student, student quiz result, your quiz result, view score quiz, quiz view score
+                                quizzes score, quiz scores">
 
   <link rel="stylesheet" href="css/maicons.css">
 
