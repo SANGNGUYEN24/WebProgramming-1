@@ -27,11 +27,11 @@ continue_btn.onclick = ()=>{
     quiz_box.classList.add("activeQuiz"); //show quiz box
     showQuetions(0); //calling showQestions function
     queCounter(1); //passing 1 parameter to queCounter
-    startTimer(5); //calling startTimer function
+    startTimer(15); //calling startTimer function
     startTimerLine(0); //calling startTimerLine function
 }
 
-let timeValue =  5;
+let timeValue =  15;
 let que_count = 0;
 let que_numb = 1;
 let counter;
