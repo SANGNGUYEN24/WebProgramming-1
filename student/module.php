@@ -18,7 +18,13 @@
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Student Modules</title>
+  <title>QUIZ - Your Quizzes</title>
+  
+  <meta name="description" content="More Quizzes, More Challenges ·
+                                    Different Difficulty Levels · Sign up to view the quiz!">
+              
+  <meta name="keywords" content="quiz, quizz, quizzes, quiz.com, www.quiz.com, quiz.com website, your quizzes, join quiz, do quiz
+                                 quiz student, your quiz student, your quizzes student, quiz your quizzes, your quiz">
 
   <link rel="stylesheet" href="css/maicons.css">
 

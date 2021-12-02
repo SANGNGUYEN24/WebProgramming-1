@@ -1790,6 +1790,14 @@ a.text-dark:hover, a.text-dark:focus {
 #find-another {
   border-radius: 30px;
 }
+<<<<<<< HEAD
+
+#search_proc {
+  overflow-x: hidden;
+}
+
+=======
+>>>>>>> 8022813183cf87a072849258f3fa9c4e4742d9f4
 /* Custom Plugin */
 .owl-nav {
   display: block;

@@ -64,6 +64,7 @@ formWrapper.querySelector(".cancel").addEventListener("click", () => {
 
 // Edit button
 let editBtn = document.getElementsByClassName("fa-edit");
+let option = formEdit.getElementsByTagName("option");
 
 // when edit button is click -> pass all the data to edit form textarea and input
 
@@ -95,4 +96,3 @@ for (let i = 0; i < editBtn.length; i++) {
     input[0].value = hiddenInput[6].value;
   });
 }
-

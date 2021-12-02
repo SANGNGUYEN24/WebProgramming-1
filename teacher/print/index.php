@@ -1,5 +1,11 @@
 <?php 
+  require_once '../../database/conectCollection.php';
   session_start();
+  $course = $courseCollection->findOne(['courseId' => $_SESSION["courseId"]]);
+  $quiz = $quizCollection->findOne(['quizId' => $_SESSION["quizId"]]);
+  $questions = $questionCollection->find(['quizId'=> $_SESSION["quizId"]]);
+  $courseName = $course->name;
+  $quizName = $quiz->name;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,113 +32,32 @@
 </script>
 </head>
 <body> 
-  <h1>Course: <?php echo $_SESSION["courseName"]; ?> - Quiz: <?php echo $_SESSION["quizName"]; ?></h1>
-  <button id="printPageButton" onclick="printPage()">Download PDF</button>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
-  <div>
-    <p><span>Question 1:</span> ADSDWASDZXCACWQ ?</p>
-    <p class="correct">A. ADWDOZXIC</p>
-    <p>B. OZIXCWQL</p>
-    <p>C. CZOXICQLWE</p>
-    <p>D. Nam Vo</p>
-  </div>
+  <h1> <?php echo $_SESSION["courseName"]; ?> <br/> <?php echo $_SESSION["quizName"]; ?></h1>
+
+<?php
+$idx = 1;
+echo "<button id=\"printPageButton\" onclick=\"printPage()\">Download PDF</button>";
+  foreach($questions as $question){
+    echo "
+    <div >
+    <p><span>Question $idx:</span> ".$question->description."</p>
+    <p class=\"correct\">A. ".$question->option1."</p>
+    <p>B. ".$question->option2."</p>
+    <p>C. ".$question->option3."</p>
+    <p id = \"last-option\">D. ".$question->option4."</p>
+  </div>";
+  
+  $idx++;
+  }
+// Test fetching
+// Test fetching
+// Test fetching
+// Test fetching
+// Test fetching
+// Test fetching
+  
+?>
+  
 </body>
 </html>
 

@@ -1,5 +1,5 @@
 <?php
-require_once './connectDatabase.php';
+require "../../database/connectDatabase.php";
 
 // Reference to the database collections
 $teacherCollection = $data->teacher;

@@ -17,7 +17,13 @@
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Search page</title>
+  <title>QUIZ - Find More Here</title>
+
+  <meta name="description" content="Find More Quizzes Here · Get Quizzes From Your Teacher ·
+                                    Sign up for more information!">
+              
+  <meta name="keywords" content="quiz, quizz, quizzes, quiz.com, www.quiz.com, quiz.com website, online quiz, find quiz, quiz from, quizzes from,
+                                 quiz of, quizzes of, quiz search, quizzes search, quiz find, quizzes find, search quiz, search quizzes">
 
   <link rel="stylesheet" href="css/maicons.css">
 

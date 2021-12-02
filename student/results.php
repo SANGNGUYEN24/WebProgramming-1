@@ -55,8 +55,14 @@ if (isset($_GET['quizID'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Result</title>
+    <title>QUIZ - View Your Result</title>
+
+    <meta name="description" content="Try Your Best and Do Better · Sign up to test yourself!">
+              
+    <meta name="keywords" content="quiz, quizz, quizzes, quiz.com, www.quiz.com, quiz.com website, your quizzes, quiz results, 
+                                 result student, result quiz student, result quizzes student, student quiz result, your quiz result">
     <link rel="stylesheet" href="css/index.css">
+
 </head>
 
 <body class="body-results">
