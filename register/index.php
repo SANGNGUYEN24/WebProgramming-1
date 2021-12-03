@@ -130,7 +130,11 @@ if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
                                 "teacherId" => 'TC-' . (string)$id,
                                 'name' => $fullname,
                                 'username' => $username,
+<<<<<<< HEAD
                                 'password' => md5($password),
+=======
+                                'password' => $password,
+>>>>>>> 5e5cc41e261b91d776f71695961fe4efdce9c7b6
                                 'gender' => '',
                                 'birthday' => '',
                                 'phone' => '',
@@ -149,7 +153,11 @@ if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
                                 "studentId" => 'STU-' . (string)$id,
                                 'name' => $fullname,
                                 'username' => $username,
+<<<<<<< HEAD
                                 'password' => md5($password),
+=======
+                                'password' => $password,
+>>>>>>> 5e5cc41e261b91d776f71695961fe4efdce9c7b6
                                 'gender' => '',
                                 'birthday' => '',
                                 'phone' => '',
@@ -162,6 +170,7 @@ if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
                 }
             }
 
+<<<<<<< HEAD
                 // if ($role == 'Teacher') {
                 //     $post = $db->teacher;
                 //     $res = $post->findOne(['username' => $username]);
@@ -199,6 +208,9 @@ if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
                 //         echo "<p class='wrong'>Username already exists</p>";
                 //     }
                 // }
+=======
+
+>>>>>>> 5e5cc41e261b91d776f71695961fe4efdce9c7b6
 
             ?>
             <button type="submit" id="mybtn" class="RegisterButton" disabled name="register">Register</button>
