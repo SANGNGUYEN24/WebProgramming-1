@@ -61,7 +61,7 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == NULL) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="">
-  <meta name="description" content="The effective online-quiz system for schools to create, manage and take online quizzes·                             Suitable for any devices · Sign up for free!">
+  <meta name="description" content="The effective online-quiz system for schools to create, manage and take online quizzes· Suitable for any devices · Sign up for free!">
   <?php
   if ($page == "course"){
     echo '

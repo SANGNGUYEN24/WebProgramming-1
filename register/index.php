@@ -19,6 +19,7 @@ if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QUIZ MAKER - Register </title>
+    <meta name="description" content="This website is used to do quiz for free. This is used by teachers and students. Students do the quiz from the teachers.">
     <meta name="keywords" content="quiz, quizz, quizzes, quiz.com, www.quiz.com, quiz.com website, online quiz, join quiz, do quiz
                                  quiz register">
     <link rel="stylesheet" href="./login.css">
@@ -81,7 +82,7 @@ if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
                 $role = $_POST['role'];
                 $fullname = $_POST['fullname'];
                 $username = $_POST['username'];
-                $password = md5($_POST['password']);
+                $password = $_POST['password'];
                 $id = rand(1000000000, 10000000000);
 
                 function test_input($data)
@@ -129,7 +130,7 @@ if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
                                 "teacherId" => 'TC-' . (string)$id,
                                 'name' => $fullname,
                                 'username' => $username,
-                                'password' => $password,
+                                'password' => md5($password),
                                 'gender' => '',
                                 'birthday' => '',
                                 'phone' => '',
@@ -148,7 +149,7 @@ if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
                                 "studentId" => 'STU-' . (string)$id,
                                 'name' => $fullname,
                                 'username' => $username,
-                                'password' => $password,
+                                'password' => md5($password),
                                 'gender' => '',
                                 'birthday' => '',
                                 'phone' => '',
