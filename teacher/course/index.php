@@ -78,6 +78,7 @@ if (isset($_POST['btnDeleteCourse'])) {
   // Get teacher courses:
   $teacherCourses = $teacher->getAllCoursesBelongsTo();
 
+              // <img src='../assets/ellipsis-h-solid.svg' alt='menu-icon' class='fas' />
   // Render courses to card
   foreach ($teacherCourses as $teacherCourse) {
     echo "
@@ -90,7 +91,7 @@ if (isset($_POST['btnDeleteCourse'])) {
           <div class='content-bottom'>
             <a href='./?page=quiz&courseId=" . $teacherCourse->courseId . "&courseName=" . $teacherCourse->name . "'><button>View</button></a>
             <div class='drop-down'>
-              <i class='fas fa-ellipsis-v'></i>
+              <svg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='ellipsis-h' class='svg-inline--fa fa-ellipsis-h fa-w-16 fas' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='currentColor' d='M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z'></path></svg>
               <div class='drop-down-list'>
                 <p class='edit'>Edit name</p>
                 <p class='delete'>Delete course</p>

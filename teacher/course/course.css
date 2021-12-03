@@ -199,23 +199,20 @@
 .drop-down {
   position: absolute;
   right: 0;
+  top: 0;
   bottom: 0;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .drop-down .fas {
-  width: 24px;
-  height: 38px;
+  width: 38px;
+  height: 24px;
   cursor: pointer;
-}
 
-.drop-down .fas::before {
-  width: 24px;
-  height: 38px;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transform: rotate(90deg);
 }
 
 .drop-down-list {
@@ -226,6 +223,7 @@
   position: absolute;
   width: max-content;
   right: 0;
+  top: 100%;
   text-align: left;
   transition: display 3s;
 }
@@ -330,12 +328,12 @@
     transform: scale(1.2);
   }
 
-  .drop-down .fas::before {
-    color: rgba(209, 213, 219, 1);
+  .drop-down .fas path {
+    fill: rgba(209, 213, 219, 1);
   }
 
-  .drop-down:hover .fas::before {
-    color: rgba(75, 85, 99, 1);
+  .drop-down:hover .fas path {
+    fill: rgba(75, 85, 99, 1);
   }
 
   .drop-down-list p:hover {
