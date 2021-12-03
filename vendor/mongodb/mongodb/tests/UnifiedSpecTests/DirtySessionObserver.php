@@ -8,7 +8,6 @@ use MongoDB\Driver\Monitoring\CommandStartedEvent;
 use MongoDB\Driver\Monitoring\CommandSubscriber;
 use MongoDB\Driver\Monitoring\CommandSucceededEvent;
 use stdClass;
-
 use function in_array;
 use function MongoDB\Driver\Monitoring\addSubscriber;
 use function MongoDB\Driver\Monitoring\removeSubscriber;
@@ -39,7 +38,7 @@ class DirtySessionObserver implements CommandSubscriber
     /**
      * @see https://www.php.net/manual/en/mongodb-driver-monitoring-commandsubscriber.commandfailed.php
      */
-    public function commandFailed(CommandFailedEvent $event): void
+    public function commandFailed(CommandFailedEvent $event)
     {
         if (! in_array($event->getRequestId(), $this->requestIds)) {
             return;
@@ -53,7 +52,7 @@ class DirtySessionObserver implements CommandSubscriber
     /**
      * @see https://www.php.net/manual/en/mongodb-driver-monitoring-commandsubscriber.commandstarted.php
      */
-    public function commandStarted(CommandStartedEvent $event): void
+    public function commandStarted(CommandStartedEvent $event)
     {
         if ($this->lsid == ($event->getCommand()->lsid ?? null)) {
             $this->requestIds[] = $event->getRequestId();
@@ -63,21 +62,21 @@ class DirtySessionObserver implements CommandSubscriber
     /**
      * @see https://www.php.net/manual/en/mongodb-driver-monitoring-commandsubscriber.commandsucceeded.php
      */
-    public function commandSucceeded(CommandSucceededEvent $event): void
+    public function commandSucceeded(CommandSucceededEvent $event)
     {
     }
 
-    public function observedNetworkError(): bool
+    public function observedNetworkError() : bool
     {
         return $this->observedNetworkError;
     }
 
-    public function start(): void
+    public function start()
     {
         addSubscriber($this);
     }
 
-    public function stop(): void
+    public function stop()
     {
         removeSubscriber($this);
     }

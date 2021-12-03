@@ -1,22 +1,31 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-develop',
-        'version' => 'dev-develop',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9738ae219e8b9d0aa90c7e89d6ea068f139ec584',
+        'reference' => '458702e710323a5e8cce5e7d1a1a74cf2cda037c',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-develop',
-            'version' => 'dev-develop',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9738ae219e8b9d0aa90c7e89d6ea068f139ec584',
+            'reference' => '458702e710323a5e8cce5e7d1a1a74cf2cda037c',
+            'dev_requirement' => false,
+        ),
+        'composer/package-versions-deprecated' => array(
+            'pretty_version' => '1.11.99.4',
+            'version' => '1.11.99.4',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/./package-versions-deprecated',
+            'aliases' => array(),
+            'reference' => 'b174585d1fe49ceed21928a945138948cb394600',
             'dev_requirement' => false,
         ),
         'doctrine/instantiator' => array(
@@ -29,21 +38,21 @@
             'dev_requirement' => false,
         ),
         'jean85/pretty-package-versions' => array(
-            'pretty_version' => '2.0.5',
-            'version' => '2.0.5.0',
+            'pretty_version' => '1.6.0',
+            'version' => '1.6.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../jean85/pretty-package-versions',
             'aliases' => array(),
-            'reference' => 'ae547e455a3d8babd07b96966b17d7fd21d9c6af',
+            'reference' => '1e0104b46f045868f11942aea058cd7186d6c303',
             'dev_requirement' => false,
         ),
         'mongodb/mongodb' => array(
-            'pretty_version' => '1.10.0',
-            'version' => '1.10.0.0',
+            'pretty_version' => '1.8.0',
+            'version' => '1.8.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../mongodb/mongodb',
             'aliases' => array(),
-            'reference' => 'b0bbd657f84219212487d01a8ffe93a789e1e488',
+            'reference' => '953dbc19443aa9314c44b7217a16873347e6840d',
             'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(
@@ -66,6 +75,12 @@
             'aliases' => array(),
             'reference' => '210577fe3cf7badcc5814d99455df46564f3c077',
             'dev_requirement' => false,
+        ),
+        'ocramius/package-versions' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '1.11.99',
+            ),
         ),
         'phar-io/manifest' => array(
             'pretty_version' => '2.0.3',
