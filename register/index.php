@@ -18,7 +18,9 @@ if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>QUIZ MAKER - Register </title>
+    <meta name="keywords" content="quiz, quizz, quizzes, quiz.com, www.quiz.com, quiz.com website, online quiz, join quiz, do quiz
+                                 quiz register">
     <link rel="stylesheet" href="./login.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
