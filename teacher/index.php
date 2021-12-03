@@ -106,6 +106,9 @@ if (!isset($_SESSION['username']) && $_SESSION['username'] == NULL) {
   <link rel="stylesheet" href="./teacher.css">
   <link rel="stylesheet" href="./<?php echo "$page/$page"; ?>.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- Icon -->
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 </head>
 

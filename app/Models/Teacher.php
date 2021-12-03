@@ -60,6 +60,7 @@ class Teacher
     // Add new course to Course collection: 
     $addResult = $this->dtb->courseCollection->insertOne([
       'courseId' => $newCourseId,
+      'teacherId' => $this->teacherId,
       'name' => $courseName,
       'year' => date("Y"),
     ]);
@@ -73,12 +74,12 @@ class Teacher
       ['$set' => ['courseIds' => $this->courseIds]]
     );
 
-    return [$newCourseId, array($addResult->getInsertedCount(), $updateResult->getMatchedCount(), $updateResult->getModifiedCount())];
+    return [[$addResult->getInsertedCount(), $updateResult->getModifiedCount()], $newCourseId];
   }
 
   public function editCourseName($targetCourseId = "", $courseName = "")
   {
-    if ($targetCourseId == "") return;
+    if ($targetCourseId == "" || $courseName == "") return;
 
     // Update courseName:
     $updateResult = $this->dtb->courseCollection->updateOne(
@@ -86,38 +87,43 @@ class Teacher
       ['$set' => ['name' => $courseName]]
     );
 
-    return array($updateResult->getMatchedCount(), $updateResult->getModifiedCount());
+    return $updateResult->getModifiedCount();
   }
 
   public function deleteCourse($targetCourseId = "")
   {
     if ($targetCourseId == "") return;
 
+    // Initialize return value:
+    $deletedMarks = 0;
+    $deletedQuestions = 0;
+    $deletedQuizzes = 0;
+    $deletedCourse = 0;
+
     // Get all quiz that course has:
     $quizzes = $this->dtb->quizCollection->find(['courseId' => $targetCourseId]);
 
     // Delete all marks and questions:
     foreach ($quizzes as $quiz) {
-      $this->dtb->markCollection->deleteMany([
+      $deletedMarks += $this->dtb->markCollection->deleteMany([
         'quizId' => $quiz->quizId
-      ]);
-      $this->dtb->questionCollection->deleteMany([
+      ])->getDeletedCount();
+      $deletedQuestions += $this->dtb->questionCollection->deleteMany([
         'quizId' => $quiz->quizId
-      ]);
+      ])->getDeletedCount();
     }
 
     // Delete all quizzes and courseId:
-    $this->dtb->quizCollection->deleteMany(['courseId' => $targetCourseId]);
-    $deleteResult  = $this->dtb->courseCollection->deleteOne(['courseId' => $targetCourseId]);
+    $deletedQuizzes += $this->dtb->quizCollection->deleteMany(['courseId' => $targetCourseId])->getDeletedCount();
+    $deletedCourse += $this->dtb->courseCollection->deleteOne(['courseId' => $targetCourseId])->getDeletedCount();
 
     // Update courseIds for teacher:
     $targetCoursePosition = array_search($targetCourseId, $this->courseIds);
     array_splice($this->courseIds, $targetCoursePosition, 1);
-    $updateResult = $this->dtb->teacherCollection->updateOne(
+    $updateCourseIdsOfTeacher = $this->dtb->teacherCollection->updateOne(
       ['teacherId' => $this->teacherId],
       ['$set' => ['courseIds' => $this->courseIds]]
     );
-
-    return array($deleteResult->getDeletedCount(), $updateResult->getMatchedCount(), $updateResult->getModifiedCount());
+    return [$deletedMarks, $deletedQuestions, $deletedQuizzes, $deletedCourse, $updateCourseIdsOfTeacher->getModifiedCount()];
   }
 }

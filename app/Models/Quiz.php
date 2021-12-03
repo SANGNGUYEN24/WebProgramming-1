@@ -46,15 +46,19 @@ class Quiz
     return $marks;
   }
 
-  public function getQuestionByDescription($description)
+  public function getQuestionById($questionId)
   {
-    $question = $this->dtb->questionCollection->findOne(['quizId' => $this->quizId, 'courseId' => $this->courseId, 'description' => $description]);
+    $question = $this->dtb->questionCollection->findOne(
+      [
+        '_id' => $questionId
+      ]
+    );
     return $question;
   }
 
   public function addQuestion($description = "", $option1 = "", $option2 = "", $option3 = "", $option4 = "", $level = 0)
   {
-    if ($description == "" | $option1 == "" | $option2 == "" | $option3 == "" | $option4 == "" | $level == 0) {
+    if ($description == "" || $option1 == "" || $option2 == "" || $option3 == "" || $option4 == "" || $level == 0) {
       return;
     }
 
@@ -70,13 +74,13 @@ class Quiz
       'unitScore' => (int) $level * 10
     ]);
 
-    return $insertQuestionResult->getInsertedCount();
+    return [$insertQuestionResult->getInsertedCount(), $insertQuestionResult->getInsertedId()];
   }
 
   public function editQuestion($targetQuestionId = "", $description = "", $option1 = "", $option2 = "", $option3 = "", $option4 = "", $level = 0)
   {
     if (
-      $targetQuestionId == "" | $description == "" | $option1 == "" | $option2 == "" | $option3 == "" | $option4 == "" |
+      $targetQuestionId == "" || $description == "" || $option1 == "" || $option2 == "" || $option3 == "" || $option4 == "" ||
       $level == 0
     ) {
       return;
@@ -99,7 +103,7 @@ class Quiz
       ]
     );
 
-    return array($updateQuestionResult->getMatchedCount(), $updateQuestionResult->getModifiedCount());
+    return $updateQuestionResult->getModifiedCount();
   }
 
   public function deleteQuestion($targetQuestionId = "")

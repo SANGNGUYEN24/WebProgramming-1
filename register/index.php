@@ -83,44 +83,120 @@ if (!isset($_SESSION['username']) or $_SESSION['username'] == NULL) {
                 $password = md5($_POST['password']);
                 $id = rand(1000000000, 10000000000);
 
-                if ($role == 'Teacher') {
-                    $post = $db->teacher;
-                    $res = $post->findOne(['username' => $username]);
-                    if (empty($res)) {
-                        $insert = $post->insertOne([
-                            "teacherId" => 'TC-' . (string)$id,
-                            'name' => $fullname,
-                            'username' => $username,
-                            'password' => $password,
-                            'gender' => '',
-                            'birthday' => '',
-                            'phone' => '',
-                            'courseIds' => [],
-                        ]);
-                        echo "<p class='correct'>Register successfully</p>";
-                    } else {
-                        echo "<p class='wrong'>Username already exists</p>";
-                    }
-                } else {
-                    $post = $db->student;
-                    $res = $post->findOne(['username' => $username]);
+                function test_input($data)
+                {
+                    $data = trim($data);
+                    $data = stripslashes($data);
+                    $data = htmlspecialchars($data);
+                    return $data;
+                }
 
-                    if (empty($res)) {
-                        $insert = $post->insertOne([
-                            "studentId" => 'STU-' . (string)$id,
-                            'name' => $fullname,
-                            'username' => $username,
-                            'password' => $password,
-                            'gender' => '',
-                            'birthday' => '',
-                            'phone' => '',
-                        ]);
-                        echo "<p class='correct'>Register successfully</p>";
+                function validatePassword($password)
+                {
+                    if (empty($password)) {
+                        echo '<p class="wrong">Password is required</p>';
+                        return false;
+                    }
+                    $password = test_input($password);
+                    if (!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/", $password)) {
+                        echo '<p class="wrong">Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters!</p>';
+                        return false;
+                    }
+                    return true;
+                }
+
+                function validateUsername($username)
+                {
+                    if (empty($username)) {
+                        echo '<p class="wrong">Username is required</p>';
+                        return false;
+                    }
+                    $username = test_input($username);
+                    if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
+                        echo '<p class="wrong">Invalid email format</p>';
+                        return false;
+                    }
+                    return true;
+                }
+
+                if (validatePassword($password) && validateUsername($username)) {
+                    if ($role == 'Teacher') {
+                        $post = $db->teacher;
+                        $res = $post->findOne(['username' => $username]);
+                        if (empty($res)) {
+                            $insert = $post->insertOne([
+                                "teacherId" => 'TC-' . (string)$id,
+                                'name' => $fullname,
+                                'username' => $username,
+                                'password' => $password,
+                                'gender' => '',
+                                'birthday' => '',
+                                'phone' => '',
+                                'courseIds' => [],
+                            ]);
+                            echo "<p class='correct'>Register successfully</p>";
+                        } else {
+                            echo "<p class='wrong'>Username already exists</p>";
+                        }
                     } else {
-                        echo "<p class='wrong'>Username already exists</p>";
+                        $post = $db->student;
+                        $res = $post->findOne(['username' => $username]);
+
+                        if (empty($res)) {
+                            $insert = $post->insertOne([
+                                "studentId" => 'STU-' . (string)$id,
+                                'name' => $fullname,
+                                'username' => $username,
+                                'password' => $password,
+                                'gender' => '',
+                                'birthday' => '',
+                                'phone' => '',
+                            ]);
+                            echo "<p class='correct'>Register successfully</p>";
+                        } else {
+                            echo "<p class='wrong'>Username already exists</p>";
+                        }
                     }
                 }
             }
+
+                // if ($role == 'Teacher') {
+                //     $post = $db->teacher;
+                //     $res = $post->findOne(['username' => $username]);
+                //     if (empty($res)) {
+                //         $insert = $post->insertOne([
+                //             "teacherId" => 'TC-' . (string)$id,
+                //             'name' => $fullname,
+                //             'username' => $username,
+                //             'password' => $password,
+                //             'gender' => '',
+                //             'birthday' => '',
+                //             'phone' => '',
+                //             'courseIds' => [],
+                //         ]);
+                //         echo "<p class='correct'>Register successfully</p>";
+                //     } else {
+                //         echo "<p class='wrong'>Username already exists</p>";
+                //     }
+                // } else {
+                //     $post = $db->student;
+                //     $res = $post->findOne(['username' => $username]);
+
+                //     if (empty($res)) {
+                //         $insert = $post->insertOne([
+                //             "studentId" => 'STU-' . (string)$id,
+                //             'name' => $fullname,
+                //             'username' => $username,
+                //             'password' => $password,
+                //             'gender' => '',
+                //             'birthday' => '',
+                //             'phone' => '',
+                //         ]);
+                //         echo "<p class='correct'>Register successfully</p>";
+                //     } else {
+                //         echo "<p class='wrong'>Username already exists</p>";
+                //     }
+                // }
 
             ?>
             <button type="submit" id="mybtn" class="RegisterButton" disabled name="register">Register</button>

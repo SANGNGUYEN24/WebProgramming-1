@@ -58,7 +58,6 @@ for (let i = 0; i < input.length; i++) {
 }
 
 window.addEventListener("click", (event) => {
-  console.log(event.target);
   if (event.target.className != "input" && index != -1) {
     InputWrapper[index].style.borderColor = "rgba(200,200,200,1)";
     index = -1;

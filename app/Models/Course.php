@@ -44,7 +44,7 @@ class Course
 
   public function addQuiz($quizName = "", $startDate = "", $dueDate = "")
   {
-    if ($quizName == "" | $startDate == "" | $dueDate == "") {
+    if ($quizName == "" || $startDate == "" || $dueDate == "") {
       return;
     }
 
@@ -65,7 +65,7 @@ class Course
 
   public function editQuiz($targetQuizId = "", $quizName = "", $startDate = "", $dueDate = "")
   {
-    if ($targetQuizId == "" | $quizName == "" | $startDate == "" | $dueDate == "") {
+    if ($targetQuizId == "" || $quizName == "" || $startDate == "" || $dueDate == "") {
       return;
     }
 
@@ -79,7 +79,7 @@ class Course
       ]]
     );
 
-    return array($updateQuizResult->getMatchedCount(), $updateQuizResult->getModifiedCount());
+    return $updateQuizResult->getModifiedCount();
   }
 
   public function deleteQuiz($targetQuizId = "")
@@ -93,13 +93,13 @@ class Course
       'quizId' => $targetQuizId
     ]);
 
-    $deleteQuestionResult = $this->dtb->questionCollection->deleteMany([
+    $deleteQuestionsResult = $this->dtb->questionCollection->deleteMany([
       'quizId' => $targetQuizId
     ]);
 
     // Delete quiz
     $deleteQuizResult = $this->dtb->quizCollection->deleteOne(['quizId' => $targetQuizId]);
 
-    return array($deleteMarksResult->getDeletedCount(), $deleteQuestionResult->getDeletedCount(), $deleteQuizResult->getDeletedCount());
+    return [$deleteMarksResult->getDeletedCount(), $deleteQuestionsResult->getDeletedCount(), $deleteQuizResult->getDeletedCount()];
   }
 }

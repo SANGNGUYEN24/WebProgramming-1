@@ -204,7 +204,6 @@ for (let i = 0; i < length; i++) {
     // pass quizId to edit form
     input[3].value = card[i].querySelector("input").value;
 
-    console.log(`quizId: ${input[3].value}`);
     formWrapper[0].style.opacity = 1;
     formWrapper[0].style.zIndex = 10;
   });
@@ -218,9 +217,6 @@ for (let i = 0; i < length; i++) {
     formWrapper[1].getElementsByTagName("input")[0].value =
       card[i].querySelector("input").value;
 
-    console.log(
-      `quizId: ${formWrapper[1].getElementsByTagName("input")[0].value}`
-    );
     formWrapper[1].style.opacity = 1;
     formWrapper[1].style.zIndex = 10;
   });
