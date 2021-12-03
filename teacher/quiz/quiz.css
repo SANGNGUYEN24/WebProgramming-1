@@ -332,10 +332,14 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
-  row-gap: 20px;
+  row-gap: 10px;
   transition: box-shadow 0.3s;
+}
+
+.test {
+  margin-bottom: 5px;
 }
 
 .card-top {

@@ -170,6 +170,7 @@ if (isset($_POST['btnDeleteQuiz'])) {
                   </div>
                 </div>
             </div>
+            <p class="test">Quiz ID: '. $quiz->quizId .'</p>
             <div class="card-bot">
               <p class="date">' . $quiz->startDate . '</p>
               <div class="horizon-line"></div>
